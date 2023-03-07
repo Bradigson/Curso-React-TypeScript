@@ -1,0 +1,115 @@
+
+
+1- fichero carpeta servicio con un fichero cion la function quie hace la peticion con la peticion.
+
+import axios from 'axios';
+
+type allDataInterfeca = {
+    id: number,
+    nombre: string,
+    comision:number,
+    estado:true
+  }
+  
+
+
+export const getData = (): Promise<allDataInterfeca[]>=>{
+      const config = {
+          method : "GET",
+          url : "https://www.apiaseguradora.somee.com/api/Aseguradora",
+          headers:{
+              
+              Authorization : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJzdHJpbmciLCJuYmYiOjE2NzgxNTA4NDksImV4cCI6MTY4MDMxMDg0OSwiaWF0IjoxNjc4MTUwODQ5fQ.akDFt1xqEUcWuos_-b3e2PUwp3C4cJSHguo0JIAvd_w'
+          }
+      }
+      
+      const data = axios.request(config)
+      .then((res)=>{
+         const dd = res.data.map((p:any)=>({
+            id: p.id,
+            nombre:p.nombre,
+            comision:p.comision,
+            estado:p.estado
+            
+         }));
+        return dd;
+      }).catch((err)=>{
+          return err.response;
+      })
+
+
+      //console.log(data);
+
+      return data;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2- llamamos la function en el app.tsx
+
+
+import './App.css';
+import { useState, useEffect } from 'react';
+import { getData } from './interseptor/services/axios.get';
+
+interface allDataInterfeca{
+  id: number,
+  nombre: string,
+  comision:number,
+  estado:true
+}
+
+function App() {
+
+   const [data, setData] = useState<allDataInterfeca[]>([]);
+
+  useEffect(()=>{
+    const fetData = async ()=>{
+      const allaseguradora = await getData();
+      setData(allaseguradora);
+      
+    }
+    fetData();
+  },[]);
+
+
+  console.log(data);
+  return (
+    <div className="App">
+      {
+        data.map(p=>{
+          return(
+            <div>{p.nombre}</div>
+          )
+        })
+      }
+    </div>
+  );
+}
+
+export default App;
+
+
+
