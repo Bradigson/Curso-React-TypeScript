@@ -1,5 +1,0 @@
-1- guardar en la cookies
-document.cookie = `token=${"bradigsonNunez"}; max-age=${60 * 3}; path=/; samesite=strict`
-
-2- traer de la cookies
-  console.log(document.cookie);

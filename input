@@ -1,0 +1,15 @@
+
+  1- const [input, setInput] = useState<string>("");
+  
+  
+    2- const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
+      setInput(e.target.value);
+  }
+
+
+
+ 3- return (
+    <div className="App">
+      <input type="text" onChange={handleChange} value={input}/>
+    </div>
+  );
