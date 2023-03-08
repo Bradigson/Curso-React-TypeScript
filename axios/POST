@@ -1,1 +1,138 @@
 
+1- function which fetch data
+
+
+import axios from 'axios';
+import { logininterface} from './Models';
+
+type response = {
+    msg : string,
+    token : string
+}
+export const login = ({name, password, token}:logininterface)=>{
+    const config = {
+        method : 'POST',
+        url : 'https://www.apiaseguradora.somee.com/api/Aseguradora/login',
+        headers:{
+            Authorization : `Bearer ${token}`
+        },
+        data:{
+            name : name,
+            password : password
+        }
+    }
+
+    const response = axios.request(config)
+    .then((res)=>{
+         const data:response = res.data;
+        return data
+        
+    }).catch((err)=>{
+    
+        console.log(err);
+    })
+
+    
+   return response;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2- leer y deserializar el objecto que llega
+
+
+
+import './App.css';
+import { useState, useEffect } from 'react';
+import { login } from './interseptor/services/axios.get';
+import { logininterface, logininterfaceresponse } from './interseptor/services/Models';
+
+
+type res = {
+  msg : string,
+  token : string
+}
+function App() {
+
+   
+   const [da, setDa] = useState<res>({
+    msg : "",
+    token: ""
+   })
+   const [token, setToken] = useState<string>("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJzdHJpbmciLCJuYmYiOjE2NzgxNTA4NDksImV4cCI6MTY4MDMxMDg0OSwiaWF0IjoxNjc4MTUwODQ5fQ.akDFt1xqEUcWuos_-b3e2PUwp3C4cJSHguo0JIAvd_w");
+   const [loginData, setLoginData] = useState<logininterface>({
+    name:"Bradigson",
+    password: "1231jk12k",
+    token : token
+   });
+
+   
+   const getIngo = async ()=>{
+
+      const da = await login(loginData);
+      const _des = JSON.stringify(da);
+      const info:res = JSON.parse(_des);
+      setDa(info);
+      console.log(info.token);
+
+   }
+
+   useEffect(()=>{
+      getIngo();
+
+   },[]);
+
+
+
+  return (
+    <div className="App">
+        {da.msg}
+        {da.token}
+    </div>
+  );
+}
+
+export default App;
