@@ -1,0 +1,80 @@
+1- functionpara eliminar 
+
+import axios from 'axios';
+interface deleteinterface{
+    id : number,
+    token : string
+}
+
+ interface responseDelete{
+    state:number,
+    messate : string
+}
+
+export const deleteAseguradora = ({id, token}:deleteinterface):Promise<void | responseDelete>=>{
+    const config = {
+        method : 'DELETE',
+        url : 'https://www.apiaseguradora.somee.com/api/Aseguradora/id',
+        params : {id : id},
+        headers:{
+            authorization : `Bearer ${token}`
+        },
+        data:{
+            id:id
+        }
+    }
+
+    const _response = axios.request(config)
+    .then((res)=>{
+        const data:responseDelete = res.data;
+        return data;
+    }).catch((err)=>{
+        console.log(err.response.data.errorMessage);
+    });
+
+    return _response;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+2- llamamos la function 
+
+import './App.css';
+import { useState, useEffect } from 'react';
+import { deleteAseguradora } from './interseptor/services/axios.get';
+import { deleteinterface } from './interseptor/services/Models';
+
+
+
+function App() {
+  const [data, setData] = useState<deleteinterface>({
+    id : 56,
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJzdHJpbmciLCJuYmYiOjE2NzgyMzUwNTksImV4cCI6MTY4MDM5NTA1OSwiaWF0IjoxNjc4MjM1MDU5fQ.ZpQ4K_ot8BZi9IZjQoy822e4LeioX4cWMq8ybrxbaWc"
+  });
+
+
+
+  const handleDlete = async ()=>{
+
+    const resul = await deleteAseguradora(data);
+    console.log(resul);
+
+  }
+  return (
+    <div className="App">
+
+      <button onClick={()=> handleDlete()}>Delete</button>
+    </div>
+  );
+}
+
+export default App;
