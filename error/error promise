@@ -1,0 +1,43 @@
+Promise {<pending>}
+[[Prototype]]: Promise
+[[PromiseState]]: "fulfilled"
+[[PromiseResult]]: Object
+
+
+
+
+cundo manda este error es por que no le hemos asugnado el await cuando llamamos la function 
+
+
+
+ejemplo error:
+useEffect(()=>{
+
+    const getData = async ()=>{
+        const data = updateData(input);
+        
+        console.log(data); 
+    }
+    getData();
+  },[])
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ejemplo solucion:
+  
+  
+   useEffect(()=>{
+
+    const getData = async ()=>{
+        const data = await updateData(input);
+        console.log(data);
+        
+    }
+    getData();
+  },[])
