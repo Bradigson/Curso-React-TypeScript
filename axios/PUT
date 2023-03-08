@@ -1,0 +1,115 @@
+1- function con la peticion
+import axios from 'axios';
+
+import { updateInterface, updateResponse } from './Models';
+
+export const updateData = ({id, nombre, comision, estado, token}:updateInterface):Promise<void | updateResponse>=>{
+
+
+
+
+    const config = {
+        method : 'PUT',
+        url : 'https://www.apiaseguradora.somee.com/api/Aseguradora/update',
+        headers : {
+            authorization : `Bearer ${token}`
+        },
+        data:{
+            id : id,
+            nombre : nombre,
+            comision:comision,
+            estado : estado,
+            token : token
+        }
+    }
+
+    const _response = axios.request(config)
+    .then((res)=>{
+        const response:updateResponse = res.data;
+        return response
+
+    }).catch((err)=>{
+        console.log(err);
+    });
+
+    return _response;
+}
+
+type response = {
+    msg : string,
+    token : string
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2- llamamos en metodo en app.tsx
+
+
+import './App.css';
+import { useState, useEffect } from 'react';
+import { updateData } from './interseptor/services/axios.get';
+import { updateInterface, updateResponse } from './interseptor/services/Models';
+
+
+
+function App() {
+
+  const [input, setInput] = useState<updateInterface>({
+    id : 63,
+    nombre : "stefan",
+    comision : 2.0,
+    estado : false,
+    token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJzdHJpbmciLCJuYmYiOjE2NzgyMzUwNTksImV4cCI6MTY4MDM5NTA1OSwiaWF0IjoxNjc4MjM1MDU5fQ.ZpQ4K_ot8BZi9IZjQoy822e4LeioX4cWMq8ybrxbaWc"
+  });
+
+  const [data, setData] = useState<updateResponse>();
+
+  useEffect(()=>{
+
+    const getData = async ()=>{
+        const data = await updateData(input);
+        const dat = JSON.stringify(data);
+        const result:updateResponse = JSON.parse(dat);
+        setData(result);
+        
+    }
+    getData();
+  },[])
+
+  return (
+    <div className="App">
+        {data?.messate}
+    </div>
+  );
+}
+
+export default App;
