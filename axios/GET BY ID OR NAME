@@ -1,0 +1,126 @@
+1- function service api
+import axios from 'axios';
+
+type allDataInterfeca = {
+    id: number,
+    nombre: string,
+    comision:number,
+    estado:true
+  }
+  
+  interface params{
+    name:string,
+    token : string
+  }
+
+export const readByName = ({token, name}:params): Promise<allDataInterfeca[]>=>{
+    const config = {
+        method : 'GET',
+        url : 'https://www.apiaseguradora.somee.com/api/Aseguradora/nombre',
+        params: {name:name},
+        headers:{
+            authorization: `Bearer ${token}`
+        },
+        data:{
+            name:name
+        }
+    }
+      const data = axios.request(config)
+      .then((res)=>{
+         const dd = res.data.map((p:any)=>({
+            id: p.id,
+            nombre:p.nombre,
+            comision:p.comision,
+            estado:p.estado
+            
+         }));
+         console.log(dd)
+        return dd;
+      }).catch((err)=>{
+          return err.response;
+      })
+
+
+      return data;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2- lalamamos la funtion app.tsx
+
+import './App.css';
+import { useState, useEffect } from 'react';
+import { readByName } from './interseptor/services/axios.get';
+
+
+interface readbyname{
+  id:number,
+  nombre:string,
+  comision:number
+  estado:Boolean
+}
+
+
+interface params{
+  name:string,
+  token : string
+}
+function App() {
+
+  const [data, setData] = useState<params>({
+    name:"Sanitas",
+    token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJzdHJpbmciLCJuYmYiOjE2NzgyNDE1NDQsImV4cCI6MTY4MDQwMTU0NCwiaWF0IjoxNjc4MjQxNTQ0fQ.T_WaO7J2E57gfto6qbIssHNjVJXossaoeqhKbcxaF-M"
+  })
+
+  const [res, setRes] = useState<readbyname[]>([]);
+  
+
+  useEffect(()=>{
+
+    const getAllData = async ()=>{
+       const response = await readByName(data);
+        //console.log(response);
+        setRes(response);
+    }
+
+    getAllData();
+    // console.log(response);
+
+  },[])
+
+
+  console.log(res.map(p=>p.estado))
+  return (
+    <div className="App">
+        {res.map(p=>p.nombre)}
+    </div>
+  );
+}
+
+export default App;
+
