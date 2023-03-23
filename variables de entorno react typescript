@@ -1,0 +1,10 @@
+1- creamos un archivo .env
+REACT_APP_URL_LOGIN = bradigson
+
+debe de empezar con REACT_APP, si no, no funciona
+
+
+
+
+2- lo llamamos
+process.env.REACT_APP_URL_LOGIN
