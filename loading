@@ -1,0 +1,68 @@
+import '../assets/styles/mobile/login.component.scss';
+import {Link} from 'react-router-dom';
+import { LoginRequest } from '../services/login.service';
+import { useState } from 'react';
+import { ILoginRquest, ILoginResponse } from '../services/models';
+import Cookies from 'universal-cookie'; 
+import validator from 'validator'
+
+const cookie = new Cookies();
+const Login = ()=>{
+    const cookie = new Cookies();
+
+    const [login, setLogin] = useState<ILoginRquest>({
+        userName : "Marcelo",
+        userPassword : "Bachi23@#",
+        
+    });
+    const [loginResponse, setLoginResponse] = useState<ILoginResponse>();
+    const [loading, setLoading] = useState<boolean>(false);
+
+
+    const handleLogin = async (e:any)=>{
+        e.preventDefault();
+        setLoading(!loading);
+        
+        await LoginRequest(login)
+        .then(data=>{
+            const deserialize = JSON.stringify(data);
+            const getDeserialized = JSON.parse(deserialize);
+            setLoginResponse(getDeserialized );
+            console.log(data);
+            setLoading(false);
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+
+
+    console.log(loading);
+    //console.log(cookie.get('token'));
+    return(
+        <div className='login'>
+            <div className='login_container'>
+                <div className='login_container-title'>
+                    <h1>Login</h1>
+                    <b>{loading ? "cargando":"no cargando"}</b>
+                </div>
+                <form className='login_container_form'>
+                    <div className='login_container_form_input'>
+                        <input type="text" placeholder="UserName" className="form-control"/>
+                    </div>
+                    <div className='login_container_form_input'>
+                        <input type="password" placeholder='PassWord' className='form-control'/>
+                    </div>
+                    <div className='login_container_form_button'>
+                        <button onClick={(e)=> handleLogin(e)}>LOGIN</button>
+                    </div>
+                    <div className='login_container_form_signup'>
+                        <Link to="">SignUp</Link>
+                    </div>
+                </form>
+            </div>
+        </div>
+    )
+}
+
+export default Login;
