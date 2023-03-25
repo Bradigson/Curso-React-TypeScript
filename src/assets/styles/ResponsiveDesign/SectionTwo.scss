@@ -1,0 +1,39 @@
+$background-color:#F0EEED;
+$link-color:#0002A1;
+
+.section_2{
+    background:$background-color;
+    height:auto;
+    padding:.4rem;
+
+    .section-2_title{
+        text-align: center;
+        margin-top:2.5rem;
+
+    }
+
+
+    .section-2_skills{
+
+        display: flex;
+        flex-wrap: wrap;
+
+
+        .section-2-skills_group-1, .section-2-skills_group-2, .section-2-skills_group-3, .section-2-skills_group-4, .section-2-skills_group-5{
+            width:50%;
+            margin-top:2rem;
+            color:$link-color;
+            padding:.5rem;
+
+            .section-2-skills_group-1_li{
+                background: #fff;
+                margin-top:.7rem;
+                border-radius: .2rem;
+                padding:.4rem;
+                text-align: center;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+            }
+        }
+    }
+}

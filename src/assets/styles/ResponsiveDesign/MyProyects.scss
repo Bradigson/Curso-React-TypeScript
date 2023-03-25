@@ -1,0 +1,25 @@
+$background-color:#F0EEED;
+$link-color:#0002A1;
+
+.section_four{
+    background:$background-color;
+    padding-top: 2rem;
+
+    .section-four_content-1{
+        text-align: center;
+        padding:1rem;
+        color:$link-color;
+    }
+
+    .section-four_content-2{
+       
+        padding:.4rem;
+
+        .section-four_content-2_card{
+            background:#fff;
+            padding:1rem;
+            border-radius: .4rem;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+    }
+}
