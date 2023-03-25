@@ -1,0 +1,43 @@
+$background-color:#F0EEED;
+$link-color:#0002A1;
+
+.myobject{
+    padding:4rem .5rem 2rem .5rem;
+    
+
+    .myobject_article-1{
+        text-align: center;
+        color: $link-color;
+    }
+
+    .myobject_article-2{
+
+        .myobject_article-2_card{
+            margin-top:1.5rem;
+            height:20vh;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: .5rem;
+            display: flex;
+            align-items: center;
+            padding:.3rem;
+            background: $background-color;
+
+            .myobject_article-2_card_img{
+                background:rgba(0, 2, 161,.1);
+                border-radius: .4rem;
+                
+            }
+
+
+            .myobject_article-2_card-title{
+                color:$link-color;
+            }
+            
+            .bx-devices, .bx-edit, .bx-code-block{
+                font-size: 3.5rem;
+                color:$link-color;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,53 @@
+$main-color:#0002A1;
+
+.section_1{
+    height: 100vh;
+    max-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    background:#fff;
+
+    .section-1_aticle_1{
+        padding:1rem;
+        div{
+            b{
+                color:$main-color;
+            }
+        }
+    }
+
+    .section-1_aticle_2{
+        padding:.5rem;
+        width:100%;
+        height:45vh;
+
+        img{
+            width:100%;
+            height:100%;
+        }
+    }
+
+
+    .section-1_aticle_3{
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5rem;
+        button{
+            border: none;
+            border-radius: 2rem;
+            background:$main-color;
+            color:#fff;
+            padding:.6rem;
+            width:17rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+            .bx-cloud-download{
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
