@@ -1,0 +1,14 @@
+1- git init
+2- git add -A
+3- git commit -m "portafolio"
+4-  git remote add origin https://github.com/Bradigson/Curso-React-TypeScript.git
+
+
+
+creear rama
+5-  git branch portafolio
+6-  git branch o  git branch -a para ver la ramas
+7- git add -A 
+8-  git commit -m "portafolio"
+9- git push --set-upstream origin portafolio
+
