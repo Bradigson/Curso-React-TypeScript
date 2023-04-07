@@ -1,0 +1,16 @@
+          
+.list-group::-webkit-scrollbar {
+                background: rgba(238,238,238,.1);
+                border-radius: 4rem;
+                width: .4rem;
+            }
+            
+            .list-group::-webkit-scrollbar-thumb {
+                border-radius: 4rem;
+                background: rgba(0,0,0,.2);
+            }
+            
+            .list-group::-webkit-scrollbar-track {
+                border-radius: 4px;
+                background: rgba(238,238,238,.1);
+            }
