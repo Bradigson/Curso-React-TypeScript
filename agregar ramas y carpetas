@@ -11,4 +11,4 @@ creear rama
 7- git add -A 
 8-  git commit -m "portafolio"
 9- git push --set-upstream origin portafolio
-
+10- para pasar a una rama git checkout nombre_rama
