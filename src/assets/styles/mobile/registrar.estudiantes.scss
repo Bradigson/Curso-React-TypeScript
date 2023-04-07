@@ -1,0 +1,149 @@
+
+
+.registrar-estudiantes
+{
+    // background:#eee;
+    height:100vh;
+    display:grid;
+    place-items: center;
+    background: -webkit-linear-gradient(top left, #F0DBF1, #90BBEB);
+    background: -moz-linear-gradient(top left, #F0DBF1, #90BBEB);
+    background: linear-gradient(to bottom right, #F0DBF1, #90BBEB);
+
+    .registrar-estudiantes_article-0
+    {
+        height:10vh;
+
+    }
+    
+
+    .registrar-estudiantes_article-1
+    {
+        
+        // height:80vh;
+        // overflow-y: auto;
+        // padding-bottom: 1.5rem;
+        width:23rem;
+        height:30rem;
+
+
+        .registrar-estudiantes-article-1_form
+        {
+            background:#eee;
+            padding:.6rem;
+           
+            .registrar-estudiantes-article-1_inputs
+            {
+
+                .registrar-estudiantes-article-1_input
+                {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: .3rem;
+                    input
+                    {
+                        margin: .2rem;
+                        border-radius:.4rem;
+                        padding-left: 1rem;
+                        border:none;
+                        width:10rem;
+
+                        &:focus
+                        {
+                            border:none;
+                            outline: none;
+                        }
+                    }
+                }
+
+                .registrar-estudiantes-article-1-inputs_details
+                {
+                    margin-top:.4rem;
+                    background:#e2dfdf;
+                    padding:.2rem;
+                }
+            }
+
+            .form-loading-registration
+            {
+                display:flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        }
+
+    }
+
+
+    .registrar-estudiantes_article-2
+    {
+        display: grid;
+        place-items: center;
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width:1150px)
+{
+    .registrar-estudiantes
+    {
+        display: grid;
+        
+
+        .registrar-estudiantes_article-1
+        {
+            width:70rem;
+            height:18rem;
+            max-width:70rem;
+            max-height:18rem;
+
+            .registrar-estudiantes-article-1_form
+            {
+                height:100%;
+
+
+                .registrar-estudiantes-article-1_inputs
+                {
+                    input{
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    }
+
+                    .registrar-estudiantes-article-1_inputs_desktop
+                    {
+                        display: flex;
+                        justify-content: space-evenly;
+                    }
+                    .registrar-estudiantes-article-1-inputs_details
+                    {
+                        display: flex;
+                        justify-content: space-evenly;
+                    }
+                   
+
+                  
+                }
+
+              
+            }
+
+            .button_destop
+            {
+                margin-top: 1.8rem;
+                button
+                {
+                    width:18rem;
+                }
+            }
+        }
+    }
+}
+

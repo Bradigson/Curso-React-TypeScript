@@ -1,0 +1,128 @@
+$link-color:#0002A1;
+
+.hamburger-menu{
+    width:25px;
+    height:30px;
+    position: fixed;
+    top:15px;
+    right:35px;
+    cursor: pointer;
+    display:flex;
+    justify-content:space-around;
+    flex-direction:column;
+    z-index:100;
+}
+.line{
+    width:100%;
+    height:3px;
+    background:$link-color;
+    transition:all 1s;
+}
+
+.change .line-1{
+    transform:rotateZ(-405deg) translate(-8px, 6px);
+}
+.change .line-2{
+    opacity:0;
+}
+.change .line-3{
+    transform:rotateZ(405deg) translate(-8px, -6px);
+} 
+header{
+    height:100vh;
+    width:100%;
+    z-index:200;
+    position:fixed;
+    top:0px;  
+    left:-27rem;
+}
+.navbar{
+    height:100vh;
+    z-index:100;
+    left:-200px;
+    transition:all 1s;
+    // background:#fff;
+    background: -webkit-linear-gradient(top left, #F0DBF1, #90BBEB);
+    background: -moz-linear-gradient(top left, #F0DBF1, #90BBEB);
+    background: linear-gradient(to bottom right, #F0DBF1, #90BBEB);
+}
+.navbar_desk-top
+{
+    display:none;
+}
+
+.change{
+    left:27rem;
+}
+
+
+//list here
+
+.list{  
+    width:100%;
+    height:70vh;
+    padding:0;
+
+    li{
+        list-style: none;
+        margin-top:.7rem;
+        display:flex;
+        padding:.4rem;
+    }
+
+    .header_uri{
+        background:rgba(170, 119, 255,.6);
+
+        width:100%;
+        padding:.6rem;
+        border-radius: .4rem;
+        // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color:$link-color;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+
+
+@media only screen and (min-width:1150px)
+{
+    .navbar{
+        display:none;
+    }
+
+    .header
+    {
+        height: 3rem;
+        width:100%;
+        left:0;
+        padding:.4rem;
+        background: #eee;
+    }
+    .navbar_desk-top
+    {
+        display:block;
+
+        .navbar_desk-top_list
+        {
+            display: flex;
+            justify-content: space-evenly;
+            
+            li{
+                list-style: none;
+            }
+
+           .header_uri
+           {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+           }
+        }
+    }
+}

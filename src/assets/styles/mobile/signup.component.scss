@@ -1,0 +1,134 @@
+$background-color:#fff;
+$background-input:#eee;
+$background-buttons:#A555EC;
+
+
+.signup-container{
+    background: -webkit-linear-gradient(top left, #F0DBF1, #90BBEB);
+    background: -moz-linear-gradient(top left, #F0DBF1, #90BBEB);
+    background: linear-gradient(to bottom right, #F0DBF1, #90BBEB);
+
+    height: 100vh;
+    display: grid;
+    place-items: center;
+
+
+    .signup-container_content{
+        background:$background-color;
+        width:24rem;
+        height:27rem;
+        border-radius: .4rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        .signup-container_form{
+           
+            height:18rem;
+
+            .signup-container_form-title{
+
+                margin-top:1.4rem;
+            }
+
+            .signup-container_form-input{
+                padding:.6rem;
+                margin-top:2rem;
+                input{
+                    border-radius: 2rem;
+                    padding-left:2rem;
+                    background: $background-input;
+                }
+
+            }
+
+
+            .button-container{
+                margin-top:2.5rem;
+
+                button{
+                    width:15rem;
+                    border:none;
+                    border-radius: .3rem;
+                    background: $background-buttons;
+                    color:$background-color;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+
+                    .button-loading{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+
+        .signup-container_content_errorMessage, .signup-container_content_successMessage{
+            margin-top:1rem;
+            height:.2rem;
+        }
+
+        .signup-container_content_go-back{
+            margin-top:3rem;
+            .bx-arrow-back{
+                font-size:1.3rem;
+            }
+        }
+    }
+     
+}
+
+
+@media only screen and (max-width: 395px){
+
+   
+    #signup-container_content{
+        width:18rem;
+        height:50vh;
+    }
+
+    
+}
+
+@media only screen and (max-width: 310px){
+
+   
+    #signup-container_content{
+        width:16.5rem;
+        height:50vh;
+    }
+
+    
+}
+
+
+
+
+
+
+@media only screen and (min-width:1150px)
+{
+    .signup-container
+    {
+
+        .signup-container_content
+        {
+
+            width:60rem;
+            height:25rem;
+            max-height:25rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+            .signup-container_form
+            {
+                height:17rem;
+
+               
+            }
+
+            .signup-container_content_go-back
+            {
+                margin-top:1.5rem;
+            }
+        }
+    }
+}

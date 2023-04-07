@@ -1,0 +1,82 @@
+.update-students
+{
+    background: -webkit-linear-gradient(top left, #F0DBF1, #90BBEB);
+    background: -moz-linear-gradient(top left, #F0DBF1, #90BBEB);
+    background: linear-gradient(to bottom right, #F0DBF1, #90BBEB);
+    height:100vh;
+    display:grid;
+    place-items: center;
+
+    .update-students_form
+    { 
+        background:#fff;
+        border-radius: .4rem;
+        padding:1.5rem;
+
+
+        .update-students_form_input
+        {
+            margin-top: .3rem;
+
+            input{
+                background:#eee;
+                border: none;
+                padding-left:1rem;
+                margin:.2rem;
+                width:10rem;
+            }
+        }
+       
+        .update-students_form_inputs_details
+        {
+            margin-top: .3rem;
+            .update-students_form_inputs_details_input
+            {
+                margin-top: .4rem;
+
+                input{
+                    background:#eee;
+                    border: none;
+                    padding-left:1rem;
+                    margin:.2rem;
+                    width:10rem;
+    
+                }
+            }
+        }
+
+        .btn-update-estudiante
+        {
+            width:15rem;
+            border:none;
+            border-radius: .3rem;
+            color:#fff;
+            background:#A459D1;
+        }
+    }
+}
+
+
+
+
+
+
+
+@media only screen and (min-width:1150px)
+{
+    .update-students
+    {
+
+        .update-students_form
+        {
+            width:60rem;
+            height:23rem;
+
+            .update-students_form-desktop
+            {
+                display: flex;
+                justify-content: space-evenly;
+            }
+        }
+    }
+}
