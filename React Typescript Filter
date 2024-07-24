@@ -1,0 +1,26 @@
+1- inpiut 
+ <div>
+                <input 
+                    type="text" 
+                    value={filter} 
+                    onChange={handleFilterChange} 
+                    placeholder="Filter items" />
+            </div>
+
+
+
+
+
+
+
+
+2-
+
+  const [filter, setFilter] = useState<string>('');
+    const [filteredBitMex, setFilteredBitmex] = useState<IBitmex[]>(state);
+
+    const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setFilter(value);
+        setFilteredBitmex(state.filter(item=> item.title.toLowerCase().includes(value.toLowerCase())));
+    };
