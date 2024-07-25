@@ -1,0 +1,4 @@
+ // Encuentra los elementos en listA que no están en listB
+                        const uniqueToListA = state.filter(itemA => 
+                            !db.some((itemB:any) => itemB.id === itemA.id)
+                        );
