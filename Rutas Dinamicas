@@ -1,0 +1,44 @@
+creamos un componente con el nombre del parametro
+[id].js
+esto debe de ir dentro de una cartpeta que tenga el mismo nombre que le pusimos
+al componente [id].js
+
+
+
+
+1- comoponente [id].js
+
+/page
+/view
+[id].js
+
+
+
+import { useRouter } from "next/router"
+const View = ()=>{
+    const router:any = useRouter();
+    const {id} = router.query;
+    console.log(id);
+    return(
+        <div>
+            el id del usuario es : {id}
+        </div>
+    )
+}
+
+
+export default View;
+
+
+
+
+
+
+
+
+
+
+2-
+ <Link href={`/view/5`}>
+        Go To Id
+      </Link>
