@@ -1,0 +1,4 @@
+
+
+import Link from "next/link";
+ <Link href="items">Items</Link>
