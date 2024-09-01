@@ -1,0 +1,26 @@
+
+1- npx create-next-app@latest
+
+
+2- para este error : 
+
+npm error code EACCES
+npm error syscall open
+npm error path /Users/bradigson/.npm/_cacache/index-v5/e6/e6/87de67f1b20b1eaef62d8e3db71b7ac118f6b98882a64a66c3fe85b3df5f
+npm error errno EACCES
+npm error
+npm error Your cache folder contains root-owned files, due to a bug in
+npm error previous versions of npm which has since been addressed.
+npm error
+npm error To permanently fix this problem, please run:
+npm error   sudo chown -R 501:20 "/Users/bradigson/.npm"
+
+npm error A complete log of this run can be found in: /Users/bradigson/.npm/_logs/2024-09-01T16_00_09_292Z-debug-0.log
+
+Aborting installation.
+  npm install has failed.
+
+
+
+use este comando : 
+sudo chown -R $(whoami):$(id -gn) ~/.npm
