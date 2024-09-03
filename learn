@@ -1,0 +1,44 @@
+1-Páginas y Rutas: Aprende cómo Next.js maneja las rutas basadas
+en archivos dentro de la carpeta pages. Cada archivo en pages 
+se convierte en una ruta automáticamente.
+
+2- Renderizado: Entiende las diferentes estrategias de renderizado, como el 
+renderizado del lado del servidor (SSR), el renderizado estático (SSG)
+y el incremental static regeneration (ISR).
+
+Renderizado del lado del servidor --> SSR: La página se genera en cada solicitud.
+Renderizado estático --> SSG: La página se genera una vez durante la construcción.
+Incremental Static Regeneration --> ISR: La página se genera durante la construcción 
+y puede actualizarse de forma incremental.
+
+
+
+3- Data Fetching:
+
+getStaticProps y getServerSideProps: Aprende cómo y cuándo usar estas funciones 
+para obtener datos en diferentes momentos del ciclo de vida de la aplicación.
+API Routes: Descubre cómo crear API endpoints dentro de tu aplicación
+Next.js para manejar solicitudes HTTP.
+
+
+
+4- Optimización:
+
+Optimización de imágenes: Next.js incluye un componente Image que optimiza las imágenes automáticamente.
+Code Splitting: Aprende cómo Next.js divide tu código en partes más pequeñas para mejorar el rendimiento.
+Prefetching: Aprovecha el prefetching de rutas para mejorar la velocidad de navegación.
+
+
+5- Autenticación y Seguridad:
+
+Autenticación: Explora cómo implementar autenticación con Next.js, utilizando herramientas como NextAuth.js.
+Protección de rutas: Aprende a proteger rutas en tu aplicación según el estado de autenticación del usuario.
+
+
+6- Enrutamiento Dinámico
+Enrutamiento Dinámico: Aprende a crear rutas dinámicas utilizando corchetes
+en los nombres de archivo, como [id].js. Esto es útil para páginas
+que dependen de parámetros variables, como perfiles de usuario o productos en una tienda.
+Catch-All Routes: También puedes crear rutas que capturen 
+múltiples segmentos de la URL utilizando corchetes triples, como [...slug].js.
+
