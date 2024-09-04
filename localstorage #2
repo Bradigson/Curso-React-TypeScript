@@ -1,0 +1,59 @@
+import { useState, useEffect } from 'react';
+
+interface IData{
+    id:number,
+    name:string,
+    surname:string,
+    age:number
+  }
+
+
+const  Details = ()=> {
+
+    const [state, setState] = useState<IData[]>([]);
+
+    const handleGetData = ()=>{
+        let response = localStorage.getItem('data');
+        setState(response !== null ? JSON.parse(response) : []);
+    }
+
+    useEffect(()=>{
+        handleGetData();
+    },[])
+    
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            handleGetData();
+        }, 2000);
+
+        return ()=> clearInterval(interval);
+    },[])
+    
+    //console.log(state)
+    state.sort((a,b)=>{
+        return a.name.localeCompare(b.name);
+    });
+
+    const handleDelete = (id:number)=>{
+        let data:IData[] = JSON.parse((localStorage.getItem('data') ?? ''));
+        let remove : IData[] = data.filter((u)=> u.id !== id);
+        let res = localStorage.setItem('data', JSON.stringify(remove));
+        handleGetData();
+    }
+    return (  
+        <div style={{color:'#000', padding:'2rem'}}>
+            <ul>
+                {
+                    state.map((u)=>(
+                        <li key={u.id}>
+                            {u.id}{"- "}{u.name} 
+                            <button onClick={()=> handleDelete(u.id)}><i className='bx bxs-trash'></i></button>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    );
+}
+
+export default Details;
