@@ -1,0 +1,67 @@
+
+    const [state, setState] = useState<IData[]>([]);
+
+    useEffect(() => {
+        const handleStorageChange = (event:any) => {
+            if (event.storageArea === localStorage && event.key === 'data') {
+                const updatedData = localStorage.getItem('data');
+                setState(updatedData !== null ? JSON.parse(updatedData) : []);
+            }
+        };
+    
+        // Agrega el event listener
+        window.addEventListener('storage', handleStorageChange);
+    
+        // Limpia el event listener al desmontar el componente
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    useEffect(()=>{
+        const handleGetLocalStorage = ()=>{
+            let data = localStorage.getItem('data');
+            setState(data !== null ? JSON.parse(data) : []);
+        }
+        let interval = setInterval(()=>{
+            handleGetLocalStorage();
+        }, 2000);
+
+        return ()=> clearInterval(interval);
+        
+    },[]);
