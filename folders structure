@@ -1,0 +1,35 @@
+my-next-app/
+│
+├── public/
+│   ├── images/
+│   └── favicon.ico
+│
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   └── Button.tsx
+│   │
+│   ├── pages/
+│   │   ├── index.tsx
+│   │   ├── about.tsx
+│   │   └── api/
+│   │       └── hello.ts
+│   │
+│   ├── styles/
+│   │   ├── globals.css
+│   │   └── Home.module.css
+│   │
+│   ├── hooks/
+│   │   └── useCustomHook.ts
+│   │
+│   ├── lib/
+│   │   └── apiClient.ts
+│   │
+│   └── utils/
+│       └── formatDate.ts
+│
+├── .gitignore
+├── package.json
+├── tsconfig.json
+└── next.config.js
