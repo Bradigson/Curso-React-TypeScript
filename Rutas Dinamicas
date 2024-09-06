@@ -42,3 +42,33 @@ export default View;
  <Link href={`/view/5`}>
         Go To Id
       </Link>
+
+
+
+
+
+
+
+
+
+
+3-
+import { useRouter } from 'next/router';
+
+const Home = () => {
+  const router = useRouter();
+
+  const handleNavigation = () => {
+    // Navegar a otra página, por ejemplo, /about
+    router.push('/about');
+  };
+
+  return (
+    <div>
+      <h1>Home Page</h1>
+      <button onClick={handleNavigation}>Ir a About</button>
+    </div>
+  );
+};
+
+export default Home;
