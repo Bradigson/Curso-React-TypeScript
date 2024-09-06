@@ -1,0 +1,217 @@
+1- npm install framer-motion
+
+
+2-
+
+import { AnimatePresence, motion } from 'framer-motion';
+
+function MyApp({ Component, pageProps, router }) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={router.route}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Component {...pageProps} />
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+export default MyApp;
+
+
+
+
+
+
+
+
+
+3-
+
+import { AnimatePresence, motion } from 'framer-motion';
+
+const variants = {
+  hidden: { opacity: 0, x: -100 }, // Página sale de la izquierda
+  enter: { opacity: 1, x: 0 },     // Página entra en el centro
+  exit: { opacity: 0, x: 100 },    // Página sale hacia la derecha
+};
+
+function MyApp({ Component, pageProps, router }) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={router.route}
+        initial="hidden"        // Estado inicial
+        animate="enter"         // Cuando la página entra
+        exit="exit"             // Cuando la página sale
+        variants={variants}     // Aplicar las transiciones personalizadas
+        transition={{ duration: 0.5 }}  // Duración de la transición
+      >
+        <Component {...pageProps} />
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+export default MyApp;
+
+
+
+
+
+
+
+
+
+Desvanecer y escalar:
+const variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  enter: { opacity: 1, scale: 1 },
+  exit: { opacity: 0, scale: 0.8 },
+};
+
+
+
+
+
+Rotación:
+const variants = {
+  hidden: { opacity: 0, rotate: 90 },
+  enter: { opacity: 1, rotate: 0 },
+  exit: { opacity: 0, rotate: -90 },
+};
+
+
+
+
+
+Rebote al entrar:
+const variants = {
+  hidden: { opacity: 0, y: -100 },
+  enter: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300 } },
+  exit: { opacity: 0, y: 100 },
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3- para diferentes componentes
+
+import { AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
+
+function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  return (
+    <AnimatePresence mode="wait">
+      <Component {...pageProps} key={router.route} />
+    </AnimatePresence>
+  );
+}
+
+export default MyApp;
+
+
+
+
+
+
+
+
+import { motion } from 'framer-motion';
+
+const Header = () => {
+  return (
+    <motion.header
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.5 }}
+    >
+      <h1>Bienvenido</h1>
+    </motion.header>
+  );
+};
+
+export default Header;
+
+
+
+
+
+
+
+
+import { motion } from 'framer-motion';
+
+const Footer = () => {
+  return (
+    <motion.footer
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.8, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <p>© 2024 Mi Sitio</p>
+    </motion.footer>
+  );
+};
+
+export default Footer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { motion } from 'framer-motion';
+
+const About = () => {
+  return (
+    <motion.div
+      initial={{ x: -200, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: 200, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <h1>Acerca de Nosotros</h1>
+      <p>Información de la empresa.</p>
+    </motion.div>
+  );
+};
+
+export default About;
+
+
+
+
+
+
+
+
+
