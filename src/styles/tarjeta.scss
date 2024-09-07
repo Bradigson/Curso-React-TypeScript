@@ -1,0 +1,76 @@
+.herencia_tarjeta{
+    background: rgba(149, 165, 166,.3);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+   // -webkit-backdrop-filter: blur(10px); /* Soporte para navegadores WebKit */
+}
+
+
+.tarjeta_container{
+    height: 48vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 1.5rem 0 1.5rem;
+    margin-top: 7rem;
+
+    .tarjeta{
+        @extend .herencia_tarjeta;
+        width: 40%;
+        height: 37vh;
+        border-radius: 1rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction:column;
+        justify-content: space-between;
+
+        .tarjeta_title{
+            display: flex;
+            align-items: center;
+
+            .bxl-mastercard{
+                font-size: 3rem;
+            }
+            .tarjeta_title_card_type{
+                margin-left: .8rem;
+            }
+        }
+
+        .tarjeta_number{
+            display: flex;
+            align-items: center;
+
+            .tarjeta_number_1{
+                font-size: 2rem;
+            }
+            .tarjeta_number_2, .tarjeta_number_3, .tarjeta_number_4{
+                margin-left: 1.2rem;
+                font-size: 2rem;
+            }
+        }
+
+        .tarjeta_footer{
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+
+            .tarjeta_footer-description{
+                display: flex;
+            }
+
+            .tarjeta_footer-images{
+                width: 19%;
+                display: flex;
+                justify-content: space-between;
+
+                img{
+                    width: 3rem;
+                    height: 3rem;
+                    border-radius: 5rem;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,84 @@
+:root{
+    --trext-color:#eee;
+
+} 
+.herencia_blurr{
+    background: rgba(255, 255, 255,.2);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    -webkit-backdrop-filter: blur(10px); /* Soporte para navegadores WebKit */
+    
+}
+.herencia_buttons{
+    background: rgba(255, 255, 255,.2);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    //-webkit-backdrop-filter: blur(10px); /* Soporte para navegadores WebKit */
+    padding: .5rem;
+    border-radius: .3rem;
+}
+.header{
+    position: fixed;
+    width: 100%;
+    height: 5rem;
+    z-index: 999;
+    top:0;
+
+    .header_nav{
+        height:100%;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        padding: 0 1.5rem 0 1.5rem;
+    }
+
+    .header_nav-log{
+        width: 3.5rem;
+        height: 3.5rem;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 5rem;
+        }
+    }
+
+
+    .header_nav-ul
+    {
+        width: 40%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .header_nav-ul_li{
+            @extend .herencia_blurr;
+            padding: .5rem;
+            border-radius: .3rem;
+            width: 18%;
+            display: flex;
+            justify-content: center;
+            color:var(--trext-color);
+
+        }
+    }
+
+    .header_nav-buttos{
+        width: 18%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:space-between;
+        align-items: center;
+
+        .header_nav-buttos_email
+        {
+            @extend .herencia_buttons;
+            border-radius: .3rem;
+            color:var(--trext-color);
+        }
+
+        .header_nav-buttos_setting
+        {
+            @extend .herencia_buttons;
+            width: 3rem;
+            color:var(--trext-color);
+        }
+    }
+}
