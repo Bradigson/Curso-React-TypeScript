@@ -1,21 +1,21 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "extends": [
-    "next/core-web-vitals", 
-    "next/typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
-  "rules": {
-    "eqeqeq": ["error", "always"],
-    "no-empty-function": "error",
-    "no-implicit-coercion": "error",
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-duplicate-enum-values": "error",
-    "@typescript-eslint/no-inferrable-types": "off"
-  }
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "next/core-web-vitals",
+        "next/typescript",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "eqeqeq": ["error", "always"], //Descripción: Requiere el uso de === y !== en lugar de == y !=.
+        "no-empty-function": "error", //Descripción: Prohíbe funciones vacías.
+        "no-implicit-coercion": "error", //Descripción: Prohíbe la coerción implícita de tipos.
+        "@typescript-eslint/no-explicit-any": "error", //Descripción: Prohíbe el uso del tipo any en TypeScript.
+        "@typescript-eslint/no-duplicate-enum-values": "error", //Descripción: Evita valores duplicados en enumeraciones TypeScript.
+        "@typescript-eslint/no-inferrable-types": "off" //Descripción: Desactiva la regla que prohíbe la inferencia de tipos cuando ya se especifica el tipo explícitamente.
+    }
 }

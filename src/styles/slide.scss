@@ -1,0 +1,15 @@
+.slide_blur {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    -webkit-backdrop-filter: blur(10px); /* Soporte para navegadores WebKit */
+}
+
+.slider-container {
+    height: 35%;
+
+    .slider-container {
+        @extend .slide_blur;
+        border-radius: 1rem;
+        padding: 0.5rem;
+    }
+}

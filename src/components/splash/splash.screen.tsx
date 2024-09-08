@@ -1,16 +1,15 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-const SplashScreen = ()=>{
-
+const SplashScreen = () => {
     const router = useRouter();
 
-    useEffect(()=>{
-        setTimeout(()=>{
-            router.push('/home')
-        },5000);
-    },[])
+    useEffect(() => {
+        setTimeout(() => {
+            router.push("/home");
+        }, 5000);
+    }, [router]);
 
-    return(
+    return (
         <div className="splash">
             <div>
                 <div className="container">
@@ -22,21 +21,22 @@ const SplashScreen = ()=>{
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <filter id="goo">
-                        <feGaussianBlur
-                            result="blur"
-                            stdDeviation="10"
-                            in="SourceGraphic"></feGaussianBlur>
-                        <feColorMatrix
-                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"
-                            mode="matrix"
-                            in="blur"></feColorMatrix>
+                            <feGaussianBlur
+                                result="blur"
+                                stdDeviation="10"
+                                in="SourceGraphic"
+                            ></feGaussianBlur>
+                            <feColorMatrix
+                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"
+                                mode="matrix"
+                                in="blur"
+                            ></feColorMatrix>
                         </filter>
                     </defs>
                 </svg>
             </div>
         </div>
-    )
-}
-
+    );
+};
 
 export default SplashScreen;

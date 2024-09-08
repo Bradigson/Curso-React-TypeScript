@@ -1,31 +1,33 @@
 {
-  "name": "metrosantodomingo",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "eslint-config-prettier": "^9.1.0",
-    "framer-motion": "^11.5.4",
-    "next": "14.2.8",
-    "react": "^18",
-    "react-dom": "^18",
-    "sass": "^1.78.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.8",
-    "eslint-plugin-prettier": "^5.2.1",
-    "postcss": "^8",
-    "prettier": "^3.3.3",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
-  }
+    "name": "metrosantodomingo",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "eslint-config-prettier": "^9.1.0",
+        "framer-motion": "^11.5.4",
+        "next": "14.2.8",
+        "react": "^18",
+        "react-dom": "^18",
+        "sass": "^1.78.0",
+        "swiper": "^11.1.12"
+    },
+    "devDependencies": {
+        "@types/node": "^22.5.4",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "@types/react-slick": "^0.23.13",
+        "eslint": "^8",
+        "eslint-config-next": "14.2.8",
+        "eslint-plugin-prettier": "^5.2.1",
+        "postcss": "^8",
+        "prettier": "^3.3.3",
+        "tailwindcss": "^3.4.1",
+        "typescript": "^5.5.4"
+    }
 }
