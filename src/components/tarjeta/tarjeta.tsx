@@ -5,15 +5,14 @@ const Tarjeta = () => {
     const [travels, setTravels] = useState<number>(15);
     const [people, setPeople] = useState<number>(0);
 
-    const handlePeople = useCallback(
-        (count: number) => {
-            setPeople((prevPeople) => {
-                if (prevPeople < 25) {
-                    return prevPeople + count;
-                }
-                return prevPeople;
-            });
-        },[]);
+    const handlePeople = useCallback((count: number) => {
+        setPeople((prevPeople) => {
+            if (prevPeople < 25) {
+                return prevPeople + count;
+            }
+            return prevPeople;
+        });
+    }, []);
 
     useEffect(() => {
         const intervalId = setInterval(() => {

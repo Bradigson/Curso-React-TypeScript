@@ -10,6 +10,60 @@
     .slider-container {
         @extend .slide_blur;
         border-radius: 1rem;
-        padding: 0.5rem;
+        padding: 0.7rem;
     }
+}
+
+
+
+
+//linea1
+
+.linea1
+{
+    height: 80%;
+
+    .linea1_list::-webkit-scrollbar {
+        /* Para WebKit (Chrome, Safari) */  
+        display: none;
+
+        
+      }
+    .linea1_list
+    {
+        overflow-y: scroll;
+        height: 100%;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+
+        .linea1_list_stacion
+        {
+            background: rgba(255, 255, 255, 0.2);
+            width: 100%;
+            margin-top: .5rem;
+            padding: 1rem;
+            border-radius: .3rem;
+            user-select: none;
+
+        }
+    }
+
+
+    .linea1_button
+    {
+        height: 20%;
+        display: flex;
+        justify-content: flex-end;
+        padding: .2rem;
+        button{
+            background: #1e8449;
+            width: 12rem;
+            border-radius: .2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+ 
 }
