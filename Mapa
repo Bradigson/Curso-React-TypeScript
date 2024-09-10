@@ -6,7 +6,6 @@
 
 
 
-
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -15,8 +14,9 @@ import { useEffect } from 'react';
 
 // Estilo del contenedor del mapa
 const mapStyle = {
-  height: "350px",
+  height: "100%",
   width: "100%",
+  borderRadius: "15px",
 };
 
 // Coordenadas del centro del mapa
@@ -63,6 +63,7 @@ const Mapa = () => {
 };
 
 export default Mapa;
+
 
 
 
