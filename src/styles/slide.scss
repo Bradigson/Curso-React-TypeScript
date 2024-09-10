@@ -1,7 +1,19 @@
+.root{
+
+}
 .slide_blur {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px); /* Efecto de desenfoque */
     -webkit-backdrop-filter: blur(10px); /* Soporte para navegadores WebKit */
+}
+.buttons{
+    background:#1e8449;
+    padding: .7rem;
+    width: 10rem;
+    border-radius: .3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .slider-container {
@@ -19,7 +31,7 @@
 
 //linea1
 
-.linea1
+.linea1, .linea1
 {
     height: 80%;
 
@@ -29,14 +41,21 @@
 
         
       }
-    .linea1_list
+
+      .linea2_list::-webkit-scrollbar {
+        /* Para WebKit (Chrome, Safari) */  
+        display: none;
+
+        
+      }
+    .linea1_list, .linea2_list
     {
         overflow-y: scroll;
         height: 100%;
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none;  /* Internet Explorer 10+ */
 
-        .linea1_list_stacion
+        .linea1_list_stacion, .linea2_list_stacion
         {
             background: rgba(255, 255, 255, 0.2);
             width: 100%;
@@ -49,21 +68,138 @@
     }
 
 
-    .linea1_button
+    .linea1_button, .linea2_button
     {
         height: 20%;
         display: flex;
         justify-content: flex-end;
         padding: .2rem;
         button{
-            background: #1e8449;
-            width: 12rem;
+            @extend .buttons;
+            width: 10rem;
             border-radius: .2rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            .linea2_button_icon
+            {
+                animation:rightAnimation 1s infinite alternate ease-in-out;
+            }
+          
         }
+        
+        
     }
 
  
 }
+
+
+
+@keyframes rightAnimation{
+    from{
+        transform: translateX(.4rem);
+    }
+    to{
+        transform: translateX(0);
+
+    }
+}
+
+
+
+
+
+
+
+
+//map
+
+/* styles/globals.css */
+.leaflet-control-attribution {
+    display: none;
+  }
+
+
+  .leaflet-control-zoom {
+    display: none;
+  }
+
+
+
+
+
+  //metodo de pago
+  .tarjeta-credito
+  {
+
+    .tarjeta-credito_number
+    {
+        background: rgba(255, 255, 255, 0.2);
+        margin-top: 1rem;
+        border-radius: .4rem;
+        padding: 1rem;
+
+    }
+
+    .tarjeta-credito_fecha{
+        text-align: end;
+        margin-top: .8rem;
+    }
+
+    .tarjeta-credito_button
+    {
+        display: flex;
+        justify-content: flex-end;
+        padding: .5rem;
+        margin-top: 1.5rem;
+        button{
+            @extend .buttons;
+            
+        }
+    }
+  }
+
+
+
+
+  //tarjetas
+
+  .tarjeta{
+    height:88%;
+
+    .tarjetas_descripcion::-webkit-scrollbar {
+        /* Para WebKit (Chrome, Safari) */  
+        display: none;
+        
+      }
+
+    .tarjetas_descripcion{
+        height:78%;
+        overflow-y: auto;
+
+        .tarjetas_descripcion-tarjeta
+        {
+            border-radius: .4rem;
+            background: rgba(255, 255, 255, 0.2);
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            padding: .8rem;
+
+        }
+    }
+
+
+    .tarjeta_button
+    {
+        margin-top: .3rem;
+        display: flex;
+        justify-content: flex-end;
+        button{
+            @extend .buttons;
+        }
+
+    }
+  }
+ 

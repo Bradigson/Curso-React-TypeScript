@@ -10,15 +10,22 @@ import MetodosPagos from "./cards-components/metodosdepago";
 import Tarjetas from "./cards-components/tarjetas";
 import Viajes from "./cards-components/viajes";
 
+import dynamic from "next/dynamic";
+import Horarios from "./cards-components/horarios";
+
+
+const MapComponent = dynamic(() => import('../slide/cards-components/mapa'), {
+    ssr: false, // Esto desactiva el renderizado del lado del servidor
+  });
 const Slide = () => {
     const info = [
+        <Tarjetas key="tarjetas" />,
         <Anuncios key="anuncios" />,
         <Linea1 key="linea1" />,
         <Linea2 key="linea2" />,
-        <Mapa key="mapa" />,
+        <MapComponent key="mapa" />,
         <MetodosPagos key="metodosPagos" />,
-        <Tarjetas key="tarjetas" />,
-        <Viajes key="viajes" />
+        <Viajes key="viajes" />,
     ];
 
     return (

@@ -3,15 +3,16 @@ import { ILinea1 } from "@/database/linea1.database";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+
 const Linea1 = () => {
 
     const [stateLinea1, setStateLinea1] = useState<ILinea1[]>([]);
 
-
-
     useEffect(()=>{
         setStateLinea1(linea1);
-    },[])
+    },[]);
+
+
     return (
         <div className="linea1 text-gray-50">
             <ul className="linea1_list">
@@ -30,7 +31,7 @@ const Linea1 = () => {
             <div className="linea1_button">
                 <button>
                     LINEA 1
-                    <i className='bx bx-chevron-right ms-4 text-2xl'></i>
+                    <i className='linea2_button_icon bx bx-chevron-right ms-4 text-2xl'></i>
                 </button>
             </div>
            
