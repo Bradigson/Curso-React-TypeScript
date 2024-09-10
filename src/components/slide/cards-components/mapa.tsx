@@ -2,8 +2,9 @@ import React, { useCallback } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useLocation from '@/hooks/useLocation';
+import { ILocation } from '@/hooks/useLocation';
 
 // Estilo del contenedor del mapa
 const mapStyle = {
@@ -40,20 +41,37 @@ const SetViewOnMap = ({ center }: { center: { lat: number, lng: number } }) => {
 // Componente del mapa
 const Mapa = () => {
 
-  const { handleLocation, loaction } = useLocation();
-
-  // Memoriza la función handleLocation
-  const getLocation = useCallback(() => {
-    handleLocation();
-  }, [handleLocation]);
+  const { getLocation } = useLocation();
+  const [location, setLocation] = useState<ILocation | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getLocation();
-  
+    const fetchLocation = async () => {
+      try {
+        const loc = await getLocation();
+        setLocation(loc);
+      } catch (err) {
+        setError(err as string);
+      }
+    };
+
+    fetchLocation();
   }, [getLocation]);
 
+  // const { handleLocation, loaction } = useLocation();
 
-  console.log(loaction)
+  // // Memoriza la función handleLocation
+  // const getLocation = useCallback(() => {
+  //   handleLocation();
+  // }, [handleLocation]);
+
+  // useEffect(() => {
+  //   getLocation();
+  
+  // }, [getLocation]);
+
+
+  // console.log(loaction)
  
 
 
