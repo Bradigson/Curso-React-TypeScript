@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+
 const SplashScreen = () => {
     const router = useRouter();
 
@@ -7,7 +8,7 @@ const SplashScreen = () => {
         setTimeout(() => {
             router.push("/home");
         }, 5000);
-    }, [router]);
+    }, []);
 
     return (
         <div className="splash">

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { memo } from "react";
 
-const Header = () => {
+const Header = memo(() => {
     return (
         <header className="header">
             <nav className="header_nav">
@@ -27,6 +28,9 @@ const Header = () => {
                     <li className="header_nav-ul_li">
                         <Link href="">Horario</Link>
                     </li>
+                    <li className="header_nav-ul_li">
+                        <Link href="">Mis Viajes</Link>
+                    </li>
                 </ul>
 
                 <div className="header_nav-buttos">
@@ -38,6 +42,6 @@ const Header = () => {
             </nav>
         </header>
     );
-};
+});
 
 export default Header;

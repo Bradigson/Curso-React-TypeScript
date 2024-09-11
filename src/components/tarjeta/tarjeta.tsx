@@ -1,7 +1,7 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, memo } from "react";
 import Image from "next/image";
 
-const Tarjeta = () => {
+const Tarjeta = memo(() => {
     const [travels, setTravels] = useState<number>(15);
     const [people, setPeople] = useState<number>(0);
 
@@ -92,6 +92,6 @@ const Tarjeta = () => {
             </article>
         </section>
     );
-};
+});
 
 export default Tarjeta;

@@ -1,9 +1,34 @@
 // import { useState } from "react";
 
-export interface ILocation{
-    latitude:number,
-    longitude:number
+export interface ILocation {
+    latitude: number;
+    longitude: number;
 }
+
+const useLocation = () => {
+    const getLocation = (): Promise<ILocation> => {
+        return new Promise((resolve, reject) => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        resolve({ latitude, longitude });
+                    },
+                    (error) => {
+                        reject(`Error al obtener la ubicación: ${error.message}`);
+                    }
+                );
+            } else {
+                reject("La geolocalización no es soportada por este navegador.");
+            }
+        });
+    };
+
+    return { getLocation };
+};
+
+export default useLocation;
 // const useLocation = ()=>{
 //     const [loaction, setLoaction] = useState<ILocation>({
 //         latitude:0,
@@ -33,49 +58,37 @@ export interface ILocation{
 //         } else {
 //             console.error('La geolocalización no es soportada por este navegador.');
 //         }
-  
+
 //     }
 
 //     return { handleLocation, loaction }
 
 // }
 
-
 // export default useLocation;
 
-
-
-
-
-
-
-
-
-
-
 // useLocation.ts
-const useLocation = () => {
-    const getLocation = (): Promise<ILocation> => {
-      return new Promise((resolve, reject) => {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              const latitude = position.coords.latitude;
-              const longitude = position.coords.longitude;
-              resolve({ latitude, longitude });
-            },
-            (error) => {
-              reject(`Error al obtener la ubicación: ${error.message}`);
-            }
-          );
-        } else {
-          reject('La geolocalización no es soportada por este navegador.');
-        }
-      });
-    };
-  
-    return { getLocation };
-  };
-  
-  export default useLocation;
-  
+// const useLocation = () => {
+//     const getLocation = (): Promise<ILocation> => {
+//       return new Promise((resolve, reject) => {
+//         if (navigator.geolocation) {
+//           navigator.geolocation.getCurrentPosition(
+//             (position) => {
+//               const latitude = position.coords.latitude;
+//               const longitude = position.coords.longitude;
+//               resolve({ latitude, longitude });
+//             },
+//             (error) => {
+//               reject(`Error al obtener la ubicación: ${error.message}`);
+//             }
+//           );
+//         } else {
+//           reject('La geolocalización no es soportada por este navegador.');
+//         }
+//       });
+//     };
+
+//     return { getLocation };
+//   };
+
+//   export default useLocation;
