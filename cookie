@@ -1,0 +1,40 @@
+npm install js-cookie
+
+
+
+  import Cookies from 'js-cookie';
+
+// Crear una cookie que expire en 7 días
+Cookies.set('nombreCookie', 'valorCookie', { expires: 7 });
+
+
+
+
+
+const valor = Cookies.get('nombreCookie');
+console.log(valor); // Muestra el valor de la cookie
+
+
+
+
+Cookies.remove('nombreCookie');
+
+
+
+
+
+
+
+
+
+
+
+
+
+import Cookies from 'js-cookie';
+
+const miArray = ['manzana', 'pera', 'plátano'];
+
+// Convertir el array a JSON y almacenarlo en la cookie
+Cookies.set('miArray', JSON.stringify(miArray), { expires: 7 });
+
