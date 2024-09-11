@@ -31,10 +31,37 @@ Cookies.remove('nombreCookie');
 
 
 
+
+
+
+
+
+
+
+
 import Cookies from 'js-cookie';
 
 const miArray = ['manzana', 'pera', 'plátano'];
 
 // Convertir el array a JSON y almacenarlo en la cookie
 Cookies.set('miArray', JSON.stringify(miArray), { expires: 7 });
+
+
+
+
+
+
+
+
+const arrayCookie = Cookies.get('miArray');
+
+// Si la cookie existe, convertirla de nuevo a un array
+const miArrayRecuperado = arrayCookie ? JSON.parse(arrayCookie) : [];
+
+console.log(miArrayRecuperado); // ['manzana', 'pera', 'plátano']
+
+
+
+Cookies.remove('miArray');
+
 
