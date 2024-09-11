@@ -1,8 +1,10 @@
 npm install js-cookie
+npm i --save-dev @types/js-cookie
 
 
 
-  import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
+
 
 // Crear una cookie que expire en 7 días
 Cookies.set('nombreCookie', 'valorCookie', { expires: 7 });
