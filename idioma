@@ -1,0 +1,4 @@
+Uso de Bibliotecas de Internacionalización:
+
+Utiliza bibliotecas como react-i18next o react-intl para gestionar traducciones y localización en React.
+react-i18next es una extensión de i18next, que ofrece una solución poderosa para traducir contenido y manejar la localización.
