@@ -1,0 +1,22 @@
+Las pruebas de integración aseguran que diferentes componentes o módulos trabajen juntos como se espera.
+
+Herramientas:
+Jest: También se puede usar para pruebas de integración.
+React Testing Library (RTL): Ideal para pruebas de integración ya que permite renderizar componentes y verificar sus interacciones.
+
+
+
+
+
+. Pruebas End-to-End (E2E)
+Las pruebas E2E verifican el flujo completo de la aplicación, desde la interfaz de usuario hasta el backend, 
+para asegurar que todos los componentes funcionen juntos como se espera en un entorno real.
+
+Herramientas:
+Cypress: Herramienta popular para pruebas E2E que proporciona una interfaz fácil de usar y una API potente para interactuar con la UI.
+Playwright: Otra opción potente y moderna para pruebas E2E.
+
+
+
+
+
