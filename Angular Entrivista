@@ -1,0 +1,162 @@
+modulo : En Angular, un módulo organiza el código en partes manejables y reutilizables.
+
+Declaraciones (declarations): Son los componentes, directivas y pipes que pertenecen a ese módulo.
+
+Entradas (imports): Son los otros módulos que necesitas usar dentro del módulo actual.
+Por ejemplo, si necesitas funcionalidades de otro módulo como FormsModule o CommonModule, los añades en imports.
+
+
+Proveedores (providers) : Son los servicios que quieres que estén disponibles para los componentes del módulo.
+Angular utiliza inyección de dependencias, por lo que los servicios declarados en providers estarán accesibles
+para todos los componentes del módulo.
+
+
+
+
+Observable: Es parte de la librería RxJS y permite manejar eventos asincrónicos como flujos de datos,
+por ejemplo, respuestas HTTP o eventos del usuario. Los observables emiten valores a lo largo del
+tiempo y permiten suscribirse a esos valores (usando .subscribe()),
+reaccionando a cambios o resultados asíncronos.
+
+
+
+
+Constructor: Se utiliza principalmente para inyectar dependencias en el componente. 
+Es el primer método que se ejecuta cuando se instancia el componente,
+
+
+
+
+
+
+Data binding es el mecanismo que Angular usa para enlazar datos entre
+el modelo (clase del componente) y la vista (template). 
+
+Interpolación ({{}}): Muestra valores de propiedades del componente en la vista.
+Property binding ([propiedad]): Vincula una propiedad del componente con un atributo de un elemento HTML.
+
+Event binding ((evento)): Escucha eventos en la vista y ejecuta métodos en el componente.
+
+Two-way data binding ([(ngModel)]): Vincula los datos de forma 
+
+bidireccional entre el componente y la vista. Es comúnmente usado en formularios.
+
+
+
+
+
+Pipes: Son características en Angular que te permiten transformar datos 
+directamente en la vista (template). Se usan con el operador | y sirven para
+transformar valores de manera sencilla sin modificar el modelo.
+
+
+DatePipe: Formatea fechas ({{ fecha | date }}).
+
+CurrencyPipe: Formatea números como moneda ({{ precio | currency }}).
+
+UpperCasePipe/LowerCasePipe: Convierte texto a mayúsculas o minúsculas ({{ texto | uppercase }}).
+
+
+
+
+
+
+Inyección de dependencias (Dependency Injection): Es un patrón de diseño en el que las dependencias 
+(servicios, componentes, etc.) son inyectadas en los componentes en lugar de ser creadas directamente por ellos. 
+
+Proveedores (Providers): Los servicios o clases que Angular puede inyectar. 
+Los defines en la propiedad providers de los módulos o componentes.
+
+Inyectar dependencias: Utilizas el constructor de un componente
+para declarar qué servicios necesita ese componente. 
+
+
+
+
+
+
+
+Servicios en Angular: Son clases que se utilizan para encapsular lógica que puede ser compartida a lo 
+largo de la aplicación. Un servicio no es un componente; es más bien una clase destinada a manejar 
+tareas específicas, como interacciones con un servidor (por ejemplo, peticiones HTTP), 
+lógica de negocio o funciones reutilizables.
+
+
+Los servicios son ideales para desacoplar la lógica de negocio de 
+los componentes y reutilizarla en varias partes de la aplicación.
+
+
+Puedes generar un servicio usando Angular CLI:
+ng generate service nombreDelServicio
+
+
+@Injectable({
+  providedIn: 'root',  // Esto hace que el servicio esté disponible en toda la app
+})
+export class DataService {
+  constructor(private http: HttpClient) {}
+
+  getData() {
+    return this.http.get('url-del-api');
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Routing en Angular: Es el mecanismo que Angular usa para navegar entre diferentes vistas 
+o componentes de la aplicación, manteniendo la experiencia de una SPA (Single Page Application). 
+El routing permite definir rutas específicas que corresponden 
+a componentes, lo que facilita la navegación en la aplicación.
+
+
+
+
+
+
+
+Guards en Angular: Son servicios que permiten controlar el acceso a rutas específicas 
+basándose en ciertas condiciones. Los guards se usan para proteger rutas y 
+decidir si un usuario puede o no acceder a ciertas partes de la aplicación.
+
+CanActivate: Decide si se puede activar una ruta. 
+
+CanDeactivate: Decide si se puede desactivar una ruta. 
+
+CanLoad: Decide si un módulo puede ser cargado. 
+
+Resolve: Pre-carga datos antes de activar una ruta. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
