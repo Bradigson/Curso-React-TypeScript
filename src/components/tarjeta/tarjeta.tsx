@@ -1,9 +1,13 @@
 import { useEffect, useState, useCallback, memo } from "react";
 import Image from "next/image";
+import { ITarjetas } from "@/database/tarjetas.database";
+import useGetTarjeta from "@/hooks/getTarjetas";
+
 
 const Tarjeta = memo(() => {
     const [travels, setTravels] = useState<number>(15);
     const [people, setPeople] = useState<number>(0);
+    const [tarjeta, setTarjeta] = useState<ITarjetas>();
 
     const handlePeople = useCallback((count: number) => {
         setPeople((prevPeople) => {
@@ -21,6 +25,26 @@ const Tarjeta = memo(() => {
         return () => clearInterval(intervalId);
     }, [handlePeople, people]);
 
+
+
+    //get tarjeta principal
+    const {handleGetTarjetPrincipal} = useGetTarjeta();
+    const handleGetTarjetaPrincipalExecuter = useCallback(async()=>{
+        const response = handleGetTarjetPrincipal();
+        response.then((t)=>{
+            setTarjeta(t);
+        })
+        .catch((err)=>{
+
+        })
+    },[handleGetTarjetPrincipal]);
+
+    useEffect(()=>{
+        handleGetTarjetaPrincipalExecuter();
+    },[ handleGetTarjetaPrincipalExecuter]);
+
+    
+
     return (
         <section className="tarjeta_container">
             <article className="tarjeta_container_title">
@@ -35,6 +59,7 @@ const Tarjeta = memo(() => {
                     </div>
                 </div>
             </article>
+
             <article className="tarjeta">
                 <div className="tarjeta_title">
                     <i className="bx bxl-mastercard text-lime-600"></i>
@@ -42,17 +67,14 @@ const Tarjeta = memo(() => {
                 </div>
 
                 <div className="tarjeta_number">
-                    <div className="tarjeta_number_1 text-gray-50">2345</div>
-                    <div className="tarjeta_number_2 text-gray-50">4323</div>
-                    <div className="tarjeta_number_3 text-gray-50">5678</div>
-                    <div className="tarjeta_number_4 text-gray-50">0987</div>
+                    <div className="tarjeta_number_1 text-gray-50">{tarjeta?.number}</div>
                 </div>
 
                 <div className="tarjeta_footer">
                     <div className="tarjeta_footer-description">
                         <div>
                             <b className="text-gray-50">Type Tarjeta : </b>
-                            <span className="text-lime-600">Green</span>
+                            <span className="text-lime-600">{tarjeta?.tipo}</span>
                         </div>
                         <div className="mx-10 w-40  flex items-center">
                             <div>
@@ -62,14 +84,13 @@ const Tarjeta = memo(() => {
                                 <span className="ml-1 text-lime-600"> 20/</span>
                                 <span
                                     className={
-                                        travels > 15
+                                        (tarjeta?.viajes ?? 0) > 15
                                             ? "text-lime-600"
-                                            : travels <= 15 && travels >= 10
+                                            : (tarjeta?.viajes ?? 0)  <= 15 && (tarjeta?.viajes ?? 0)  >= 10
                                               ? "text-lime-300"
                                               : "text-red-700"
-                                    }
-                                >
-                                    {travels}
+                                    }>
+                                    {(tarjeta?.viajes ?? 0) }
                                 </span>
                             </div>
                         </div>
@@ -90,6 +111,8 @@ const Tarjeta = memo(() => {
                     </div>
                 </div>
             </article>
+
+            
         </section>
     );
 });

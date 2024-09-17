@@ -18,12 +18,14 @@
 }
 
 .slider-container {
-    height: 35%;
+    height: 45%;
+    margin-top: 2rem;
 
     .slider-container {
         @extend .slide_blur;
         border-radius: 1rem;
         padding: 0.7rem;
+        height: 85%;
     }
 }
 

@@ -1,8 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo, useState, useEffect, memo } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { useEffect, useState } from "react";
 import useLocation from "@/hooks/useLocation";
 import { ILocation } from "@/hooks/useLocation";
 
@@ -39,26 +38,20 @@ const SetViewOnMap = ({ center }: { center: { lat: number; lng: number } }) => {
 };
 
 // Componente del mapa
-const Mapa = () => {
-    const { getLocation } = useLocation();
-    const [location, setLocation] = useState<ILocation | null>(null);
-    const [error, setError] = useState<string | null>(null);
-
-    const handleGetLocation = useCallback(async () => {
-        try {
-            const loc = await getLocation();
-            setLocation(loc);
-        } catch (err) {
-            setError(err as string);
-        }
-    }, [getLocation]);
-
-    useEffect(() => {
-        handleGetLocation();
-    }, [handleGetLocation]);
-
-    center.lat = location?.latitude ?? 0;
-    center.lng = location?.longitude ?? 0;
+const Mapa = memo(({lat, lon}:{lat:number | undefined, lon:number | undefined}) => {
+    const [location, setLocation] = useState<any>({
+        lat:0,
+        lon:0
+    })
+    
+    useMemo(()=>{
+        setLocation({
+            lat:lat,
+            lon:lon
+        });
+    },[])
+   
+    console.log(location);
 
     return (
         <MapContainer style={mapStyle} center={center} zoom={15} scrollWheelZoom={false}>
@@ -72,6 +65,6 @@ const Mapa = () => {
             </Marker>
         </MapContainer>
     );
-};
+});
 
 export default Mapa;

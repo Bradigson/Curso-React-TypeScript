@@ -17,7 +17,7 @@ const Header = memo(() => {
 
                 <ul className="header_nav-ul">
                     <li className="header_nav-ul_li">
-                        <Link href="">Comprar</Link>
+                        <Link href="/comprartarjeta">Comprar</Link>
                     </li>
                     <li className="header_nav-ul_li">
                         <Link href="">Recargar</Link>

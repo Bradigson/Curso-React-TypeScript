@@ -3,6 +3,7 @@ import "@/styles/home.scss";
 import "@/styles/header.scss";
 import "@/styles/tarjeta.scss";
 import "@/styles/slide.scss";
+import "@/styles/compra.scss";
 import "../components/splash/splash.screen.scss";
 import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
