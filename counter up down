@@ -1,0 +1,44 @@
+
+
+    const [firstNumber, setFirstNumber] = useState<number>(0);
+    const [isGenerating, setIsGenerating] = useState<boolean>(false);
+
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        if (isGenerating) {
+            interval = setInterval(() => {
+                setFirstNumber((n) => {
+                    if (n < 9) {
+                        return n + 1;
+                    } else if (n >= 9) {
+                        // Stop generating when reaching 9
+                        setIsGenerating(false);
+                        clearInterval(interval);
+                        return n;
+                    }
+                    return n;
+                });
+            }, 200);
+        } else {
+            interval = setInterval(() => {
+                setFirstNumber((n) => {
+                    if (n > 0) {
+                        return n - 1;
+                    } else {
+                        // Stop generating when reaching 0
+                        setIsGenerating(true);
+                        clearInterval(interval);
+                        return n;
+                    }
+                });
+            }, 200);
+        }
+        return () => clearInterval(interval);
+    }, [isGenerating]);
+
+    const handleGenerarSecuencia = () => {
+        setIsGenerating(true);
+    };
+
+
+
