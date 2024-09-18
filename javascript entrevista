@@ -1,0 +1,352 @@
+1-
+El event loop en JavaScript es el mecanismo que permite manejar operaciones asincrónicas, 
+a pesar de que JavaScript es de un solo hilo. Es responsable de delegar las tareas, 
+hacer seguimiento de las operaciones pendientes y asegurarse de que el 
+código asincrónico se ejecute en el momento adecuado.
+
+
+
+  Call Stack (pila de ejecución): Donde las funciones síncronas se ejecutan una por una.
+
+  Web APIs: Manejan tareas asincrónicas como setTimeout, operaciones de red o eventos de DOM.
+
+  Task Queue (cola de tareas): Cuando una operación asincrónica finaliza 
+  (por ejemplo, un setTimeout o una promesa resuelta), su callback es enviado a la cola de tareas.
+
+  Event Loop: Este bucle revisa continuamente el Call Stack y la Task Queue. 
+  Si el Call Stack está vacío, el Event Loop empuja las tareas de la cola hacia el stack para ser ejecutadas.
+
+
+
+
+El event loop asegura que las operaciones asincrónicas no 
+bloqueen la ejecución del código principal, lo que permite
+que JavaScript sea no bloqueante.
+
+
+
+
+
+
+
+
+
+
+2-
+  Una closure en JavaScript es una función que tiene acceso a su propio ámbito léxico,
+  incluso después de que la función externa ha terminado su ejecución. Esto significa 
+  que una función interna puede acceder a las variables de la función externa, 
+  aunque esta ya haya finalizado.
+
+
+  Una closure ocurre cuando una función interna tiene acceso a las variables de
+  la función externa, incluso después de que la función externa ha terminado.
+
+  Esto permite mantener un estado privado en el ámbito de la función externa.
+
+  function crearContador() {
+    let contador = 0;
+    return function incrementar() {
+        contador++;
+        console.log(contador);
+    };
+}
+
+const contador1 = crearContador();
+contador1(); // 1
+contador1(); // 2
+
+
+
+
+
+
+
+
+
+
+3-
+  En JavaScript, las funciones call(), apply() y bind() se utilizan para controlar 
+  el valor de this en una función. Aunque todos permiten establecer
+  el contexto de this, se diferencian en la forma en que manejan los argumentos.
+
+
+
+  call() : 
+  Invoca una función con un contexto (this) específico y argumentos separados por comas
+  
+  function saludo(nombre, edad) {
+    console.log(`Hola, me llamo ${nombre} y tengo ${edad} años.`);
+  }
+  
+  saludo.call(null, "Juan", 25); // Output: Hola, me llamo Juan y tengo 25 años.
+
+
+
+  apply() : 
+  Similar a call(), pero los argumentos se pasan en un array.
+  saludo.apply(null, ["Juan", 25]); // Output: Hola, me llamo Juan y tengo 25 años.
+
+
+  bind() : 
+  No invoca la función inmediatamente. Devuelve una nueva función con un contexto 
+  de this establecido, y puedes pasar argumentos también.
+  Esta nueva función puede ser llamada más tarde.
+
+  const saludoJuan = saludo.bind(null, "Juan", 25);
+  saludoJuan(); // Output: Hola, me llamo Juan y tengo 25 años.
+
+
+
+
+
+  resumen : 
+call(): Invoca la función con argumentos separados por comas.
+apply(): Invoca la función con los argumentos en un array.
+bind(): Devuelve una nueva función con un this fijado, que puede ser ejecutada después.
+
+
+
+
+
+
+
+
+
+
+  
+  4-
+
+  Hoisting en JavaScript es el comportamiento donde las declaraciones 
+  de variables y funciones son elevadas al inicio de su contexto
+  de ejecución durante la fase de compilación, antes de que se ejecute el código.
+  
+
+  El "hoisting" en JavaScript es un comportamiento que hace que las declaraciones
+  de variables y funciones sean elevadas (o "hoisted") al inicio de su contexto 
+  de ejecución antes de que se ejecute el código. Esto significa que las declaraciones 
+  son procesadas antes de que se ejecute el código, aunque las inicializaciones 
+  ocurren en el lugar donde están escritas. El hoisting afecta de manera 
+  diferente a las variables y a las funciones.
+
+
+Hoisting de Variables
+  Para las variables declaradas con var, el hoisting eleva solo la declaración, 
+  no la inicialización. Esto significa que puedes referenciar una variable 
+  antes de su declaración, pero su valor será undefined hasta que se inicialice.
+  
+  console.log(x); // Output: undefined
+  var x = 5;
+  console.log(x); // Output: 5
+
+
+
+
+
+
+Hoisting de Funciones
+  Para las funciones declaradas (no las funciones expresadas), 
+  el hoisting eleva tanto la declaración como la definición.
+  Esto significa que puedes llamar a una función antes de su declaración en el código.
+
+  console.log(saludar()); // Output: "Hola"
+
+  function saludar() {
+    return "Hola";
+  }
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5-
+  El "event delegation" (delegación de eventos) es una técnica en JavaScript que
+  consiste en manejar eventos en un elemento padre en lugar de en los elementos 
+  hijos individuales. Esta técnica es útil para gestionar eventos de manera más
+  eficiente, especialmente en situaciones donde se tienen muchos 
+  elementos similares o dinámicos.
+
+
+
+  En lugar de asignar un manejador de eventos a cada elemento hijo, 
+  asignas un único manejador al elemento padre. El manejador de
+  eventos en el padre puede entonces capturar eventos que 
+  se originan en sus elementos hijos.
+
+ventajas : 
+  Menor Consumo de Memoria
+  Facilidad de Manejo de Elementos Dinámicos
+
+  
+  <ul id="miLista">
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+    <li>Elemento 3</li>
+  </ul>
+  
+  <script>
+    // Seleccionar el elemento padre
+    const lista = document.getElementById('miLista');
+  
+    // Asignar un manejador de eventos al elemento padre
+    lista.addEventListener('click', function(event) {
+      // Verificar si el clic fue en un <li>
+      if (event.target.tagName === 'LI') {
+        console.log('Elemento clickeado:', event.target.textContent);
+      }
+    });
+  </script>
+
+    
+
+
+
+
+  
+
+
+
+
+
+    5-
+    Las promesas son utilizadas para manejar operaciones asincrónicas 
+    de manera más estructurada y legible en comparación con los callbacks.
+
+    Pendiente (Pending): Estado inicial de la promesa, donde la operación asincrónica aún no ha terminado.
+    Cumplida (Fulfilled): La operación se completó con éxito y la promesa tiene un valor asociado.
+    Rechazada (Rejected): La operación falló y la promesa tiene una razón para el fallo (error).
+
+
+
+
+
+
+
+
+
+
+    6-
+    En JavaScript, el valor de this se refiere al contexto de ejecución actual y puede 
+    cambiar dependiendo de cómo se invoca una función. Entender cómo funciona 
+    this es crucial para manejar correctamente el contexto y evitar errores en tu código.
+
+
+
+    En el contexto global, fuera de cualquier función o método,
+    this se refiere al objeto global. En el navegador, 
+    esto es window, mientras que en Node.js es global.
+
+
+    Cuando una función se llama como un método de un objeto, 
+    this se refiere al objeto que contiene el método.
+
+    const persona = {
+      nombre: 'Juan',
+      saludar: function() {
+        console.log(this.nombre); // Output: Juan
+      }
+    };
+    persona.saludar();
+
+
+
+
+
+
+7-
+  funcion de orden superior
+  
+Tu respuesta es bastante acertada en cuanto a la definición básica de funciones de orden superior. Aquí hay una explicación más detallada:
+
+Funciones de Orden Superior son funciones que:
+
+Reciben otras funciones como argumentos: Puedes pasar funciones como parámetros a una función de orden superior.
+Devuelven funciones: Pueden retornar una nueva función como resultado.
+
+
+  // Función de orden superior que toma una función y un número como argumentos
+  function operateOnNumber(func, num) {
+    return func(num);
+  }
+  
+  // Función que será pasada como argumento
+  function double(x) {
+    return x * 2;
+  }
+  
+  // Usando la función de orden superior
+  const result = operateOnNumber(double, 5);
+  console.log(result); // Output: 10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8-
+  En JavaScript, el concepto de "prototipo" es fundamental para la herencia y
+  la reutilización de código. Los prototipos permiten que los objetos hereden 
+  propiedades y métodos de otros objetos. Aquí te explico qué es el prototipo 
+  y cómo se utiliza para la herencia entre objetos.
+
+
+
+
+
+
+
+
+  9-
+  Módulos en JavaScript son una forma de estructurar y organizar el código en unidades
+  reutilizables y mantenibles. Los módulos permiten dividir el código en archivos 
+  separados y gestionar la importación y exportación de funcionalidades entre esos archivos.
+
+
+
+
+
+
+
+
+  10-
+  scope : 
+  Scope (Ámbito) en JavaScript se refiere a la visibilidad y accesibilidad de las variables
+  y funciones en diferentes partes del código. Hay dos tipos principales de scope en JavaScript:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
