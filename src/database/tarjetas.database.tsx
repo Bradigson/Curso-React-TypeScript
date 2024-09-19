@@ -3,7 +3,14 @@ export interface ITarjetas {
     number: string;
     tipo: string;
     viajes: number;
-    principal:boolean
+    principal:boolean,
+    p_nombrecompleto:string,
+    p_correo:string,
+    direccion:string,
+    ciudad:string,
+    estado:string
+
+
 }
 
 const AllTarjetas: ITarjetas[] = [
@@ -13,6 +20,11 @@ const AllTarjetas: ITarjetas[] = [
         tipo: "Green",
         viajes: 15,
         principal : true,
+        p_nombrecompleto:'',
+        p_correo:'',
+        direccion:'',
+        ciudad:'',
+        estado:''
     }
 ];
 

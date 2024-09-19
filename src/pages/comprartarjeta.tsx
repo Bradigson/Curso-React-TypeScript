@@ -1,7 +1,20 @@
 import Header from "@/components/header/header";
 import Image from "next/image";
-import { memo, useMemo, useCallback, useState, useEffect, useRef } from "react";
+import { memo, useMemo, useCallback, useState, useEffect, useRef, ChangeEvent } from "react";
+import useComprar from "@/hooks/useComprar";
+import MyModal from "@/components/modals/form.modal";
 
+
+interface IFrom{
+    nombre:string,
+    apellido:string,
+    correo:string,
+    tipoTarjeta:string,
+    direccion:string,
+    ciudad:string,
+    estado:string,
+    viajes:number
+}
 
 
 const ComprarTarjeta = ()=>{
@@ -65,9 +78,89 @@ const ComprarTarjeta = ()=>{
 
 
     const handleCancelar = ()=>{
-
         setSecuencia("0000 0000 0000 0000");
+    }
 
+
+    const [form, setForm] = useState<IFrom>({
+        nombre:'',
+        apellido:'',
+        correo:'',
+        tipoTarjeta:'Tarjetas estándar',
+        direccion:'',
+        ciudad:'',
+        estado:'',
+        viajes:0
+    })
+
+
+    const handleOnchangeViajes = (viajes:any)=>{
+        setForm((preForm)=>({
+            ...preForm,
+            viajes :  Number(viajes.target.value)
+        }));
+    }
+    const handleOnchangeNombre = (nombre:ChangeEvent<HTMLInputElement>)=>{
+        setForm((preForm)=>({
+            ...preForm,
+            nombre: nombre.target.value
+        }))
+    }
+    const handleOnchangeApellido = (apellido:ChangeEvent<HTMLInputElement>)=>{
+        setForm((preForm)=>({
+            ...preForm,
+            apellido : apellido.target.value
+
+        }))
+    }
+    const handleOnchangeCorreo = (correo:ChangeEvent<HTMLInputElement>)=>{
+        setForm((preForm)=>({
+            ...preForm,
+            correo : correo.target.value
+        }))
+    }
+    const handleOnchangeTipoTarjeta = (tipoTarjeta:ChangeEvent<HTMLSelectElement>)=>{
+        setForm((preForm)=>({
+            ...preForm,
+            tipoTarjeta : tipoTarjeta.target.value
+        }))
+    }
+    const handleOnchangeDireccion = (direccion:ChangeEvent<HTMLInputElement>)=>{
+        setForm((preForm)=>({
+            ...preForm,
+            direccion : direccion.target.value
+        }))
+    }
+    const handleOnchangeCiudad = (ciudad:ChangeEvent<HTMLInputElement>)=>{
+        setForm((preForm)=>({
+            ...preForm,
+            ciudad : ciudad.target.value
+        }))
+    }
+    const handleOnchangeEstado = (estado:ChangeEvent<HTMLInputElement>)=>{
+        setForm((preForm)=>({
+            ...preForm,
+            estado : estado.target.value
+        }))
+    }
+
+
+
+
+    const { handleComprarTarjetas} = useComprar();
+    const handleComprar = ()=>{
+        if(secuencia !== null && secuencia !== '')
+        {
+            handleComprarTarjetas(
+                secuencia.replace(/\s+/g, ''), 
+                form.tipoTarjeta, 
+                form.viajes, 
+                `${form.nombre}${form.apellido}`, 
+                form.correo,
+                form.direccion, 
+                form.ciudad, 
+                form.ciudad);
+        }
     }
 
     return(
@@ -77,148 +170,152 @@ const ComprarTarjeta = ()=>{
 
 
                 <div className="border-b border-gray-900/10 pb-12 compra_form-content">
-                    <h2 className="text-base font-semibold leading-7 text-gray-50">Personal Information</h2>
-                    <p className="mt-1 text-sm leading-6 text-gray-300">Use a permanent address where you can receive mail.</p>
+                    <h2 className="text-base font-semibold leading-7 text-gray-50">Informacion personal</h2>
+                    <p className="mt-1 text-sm leading-6 text-gray-300">Favor proporcionar un email donde pueda recibir notification.</p>
 
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div className="sm:col-span-3">
                             <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-50">
-                                First name
+                                 Nombre
                             </label>
                             <div className="mt-2">
                                 <input
-                                id="first-name"
-                                name="first-name"
-                                type="text"
-                                autoComplete="given-name"
-                                className="block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm 
-                                    ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                                    focus:outline-none pl-4 text-black border-b border-gray-500 focus:border-b-gray-700"
+                                    id="first-name"
+                                    name="first-name"
+                                    type="text"
+                                    autoComplete="given-name"
+                                    className="input block w-full py-1.5 pl-4 focus:outline-none text-white"
+                                    value={form.nombre}
+                                    onChange={(e)=> handleOnchangeNombre(e)}
+
                                 />
                             </div>
                         </div>
 
                         <div className="sm:col-span-3">
                             <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-50">
-                                Last name
+                                Apellido
                             </label>
                             <div className="mt-2">
                                 <input
-                                id="last-name"
-                                name="last-name"
-                                type="text"
-                                autoComplete="family-name"
-                                className="block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm 
-                                    ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                                    focus:outline-none pl-4 text-black border-b border-gray-500 focus:border-b-gray-700"
+                                    id="last-name"
+                                    name="last-name"
+                                    type="text"
+                                    autoComplete="family-name"
+                                    className="input block w-full py-1.5 pl-4 focus:outline-none text-white"
+                                    value={form.apellido}
+                                    onChange={(e)=> handleOnchangeApellido(e)}
                                 />
                             </div>
                         </div>
 
                         <div className="sm:col-span-4">
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-50">
-                                Email address
+                                Correo electronico
                             </label>
                             <div className="mt-2">
                                 <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                autoComplete="email"
-                                className="block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm 
-                                    ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                                    focus:outline-none pl-4 text-black border-b border-gray-500 focus:border-b-gray-700"
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    autoComplete="email"
+                                    className="input block w-full py-1.5 pl-4 focus:outline-none text-white"
+                                    value={form.correo}
+                                    onChange={(e)=> handleOnchangeCorreo(e)}
                                 />
                             </div>
                         </div>
 
                         <div className="sm:col-span-3">
                             <label htmlFor="country" className="block text-sm font-medium leading-6 text-gray-50">
-                                Country
+                                Tipo de tarjeta
                             </label>
                             <div className="mt-2">
                                 <select
                                     id="country"
                                     name="country"
                                     autoComplete="country-name"
-                                    className="block w-full rounded-md border-0 py-1.5 pr-4 text-gray-900 shadow-sm 
-                                        ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
-                                        focus:outline-none text-black border-b border-gray-500 focus:border-b-gray-700"
+                                    className="input block w-full py-1.5 pl-4 focus:outline-none text-white"
+                                    value={form.tipoTarjeta}
+                                    onChange={(e)=> handleOnchangeTipoTarjeta(e)}
                                 >
-                                    <option>United States</option>
-                                    <option>Canada</option>
-                                    <option>Mexico</option>
+                                    <option>Tarjetas estándar</option>
+                                    <option>Tarjetas premium</option>
+                                    <option>Tarjetas con recompensas</option>
                                 </select>
                             </div>
+
+                            
                         </div>
 
 
                         <div className="col-span-full">
-                        <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-50">
-                            Street address
-                        </label>
-                        <div className="mt-2">
-                            <input
-                            id="street-address"
-                            name="street-address"
-                            type="text"
-                            autoComplete="street-address"
-                            className="block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm 
-                                ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                                focus:outline-none pl-3 text-black border-b border-gray-500 focus:border-b-gray-700"
-                            />
-                        </div>
+                            <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-50">
+                                Direccion
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="street-address"
+                                    name="street-address"
+                                    type="text"
+                                    autoComplete="street-address"
+                                    className="input block w-full py-1.5 pl-4 focus:outline-none text-white"
+                                    value={form.direccion}
+                                    onChange={(e)=> handleOnchangeDireccion(e)}
+                                />
+                            </div>
                         </div>
 
                         <div className="sm:col-span-2 sm:col-start-1">
-                        <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-50">
-                            City
-                        </label>
-                        <div className="mt-2">
-                            <input
-                            id="city"
-                            name="city"
-                            type="text"
-                            autoComplete="address-level2"
-                            className="block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm 
-                                ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                                focus:outline-none pl-3 text-black border-b border-gray-500 focus:border-b-gray-700"
-                            />
-                        </div>
-                        </div>
-
-                        <div className="sm:col-span-2">
-                        <label htmlFor="region" className="block text-sm font-medium leading-6 text-gray-50">
-                            State / Province
-                        </label>
-                        <div className="mt-2">
-                            <input
-                            id="region"
-                            name="region"
-                            type="text"
-                            autoComplete="address-level1"
-                            className="block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm 
-                                ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                                focus:outline-none pl-3 text-black border-b border-gray-500 focus:border-b-gray-700"
-                            />
-                        </div>
+                            <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-50">
+                                Ciudad
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="city"
+                                    name="city"
+                                    type="text"
+                                    autoComplete="address-level2"
+                                    className="input block w-full py-1.5 pl-4 focus:outline-none text-white"
+                                    value={form.ciudad}
+                                    onChange={(e)=> handleOnchangeCiudad(e)}
+                                />
+                            </div>
                         </div>
 
                         <div className="sm:col-span-2">
-                        <label htmlFor="postal-code" className="block text-sm font-medium leading-6 text-gray-50">
-                            ZIP / Postal code
-                        </label>
-                        <div className="mt-2">
-                            <input
-                            id="postal-code"
-                            name="postal-code"
-                            type="text"
-                            autoComplete="postal-code"
-                            className="block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm 
-                                ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                                focus:outline-none pl-3 text-black border-b border-gray-500 focus:border-b-gray-700"
-                            />
+                            <label htmlFor="region" className="block text-sm font-medium leading-6 text-gray-50">
+                                Estado / Provincia
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="region"
+                                    name="region"
+                                    type="text"
+                                    autoComplete="address-level1"
+                                    className="input block w-full py-1.5 pl-4 focus:outline-none text-white"
+                                    value={form.estado}
+                                    onChange={(e)=> handleOnchangeEstado(e)}
+                                />
+                            </div>
                         </div>
+
+                        <div className="sm:col-span-2">
+                            <label htmlFor="postal-code" className="block text-sm font-medium leading-6 text-gray-50">
+                                Viajes
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="postal-code"
+                                    name="viajes"
+                                    type="text"
+                                    autoComplete="postal-code"
+                                    className="input block w-full py-1.5 pl-4 focus:outline-none text-white"
+                                    value={form.viajes}
+                                    onChange={(e)=> handleOnchangeViajes(e)}
+                                    
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -252,7 +349,7 @@ const ComprarTarjeta = ()=>{
                                     <div className="ml-px">
                                         <span className="ml-1 text-gray-50"> 20/</span>
                                         <span className="text-gray-50">
-                                            100
+                                            {form.viajes}
                                         </span>
                                     </div>
                                 </div>
@@ -288,6 +385,12 @@ const ComprarTarjeta = ()=>{
                         <button className="bg-lime-600 text-gray-50" onClick={handleGenerarSecuencia}>
                             Generar Secuencia
                         </button>
+
+                    </div>
+
+                    <div className="compra_tarjeta_buttons-comprar">
+
+                        <button onClick={handleComprar}>Comprar Targeta</button>
 
                     </div>
 

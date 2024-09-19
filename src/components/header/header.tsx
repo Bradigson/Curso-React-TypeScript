@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { memo } from "react";
+import { useRouter } from "next/router";
 
 const Header = memo(() => {
+    const route:any = useRouter();
     return (
         <header className="header">
             <nav className="header_nav">
-                <div className="header_nav-log">
+                <div className="header_nav-log" onClick={()=>route.push('/home') }>
                     <Image
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMbXedxEJCoQ8Yrd43J_dFO_Neo2_yol51rQ&s"
                         alt="_logo"

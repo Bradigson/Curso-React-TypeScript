@@ -1,13 +1,24 @@
 import { ITarjetas } from "@/database/tarjetas.database";
 import { AllTarjetas } from "@/database/tarjetas.database";
 import { useEffect, useState } from "react";
+import cookies from "js-cookie";
 
 const Tarjetas = () => {
     const [misTarjetas, setMisTarjetas] = useState<ITarjetas[]>([]);
 
-    useEffect(() => {
-        setMisTarjetas(AllTarjetas);
-    }, [misTarjetas]);
+    const handleGetTarjetas = async ()=>{
+        let alltarjetas = await cookies.get('tarjetas');
+        let res:ITarjetas[] = JSON.parse((alltarjetas ?? ''))
+        console.log(res)
+        //setMisTarjetas(res);
+    }
+
+    useEffect(()=>{
+        handleGetTarjetas();
+    },[])
+    // useEffect(() => {
+    //     setMisTarjetas(AllTarjetas);
+    // }, [misTarjetas]);
 
     return (
         <div className="tarjeta text-gray-50">
