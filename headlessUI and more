@@ -22,3 +22,5 @@ npm install @heroicons/react
 
 npm install @heroicons/react --legacy-peer-deps
 
+npm i --save-dev @types/heroicons__react --legacy-peer-deps
+
