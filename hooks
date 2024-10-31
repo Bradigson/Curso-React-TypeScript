@@ -1,0 +1,76 @@
+import { useState, useEffect } from "react";
+
+const useStringValidation = (text: string) => {
+    const [isValid, setIsValid] = useState<boolean>(false);
+
+    useEffect(() => {
+        const regex = /^[a-zA-Z0-9\s]+$/;
+        setIsValid(regex.test(text));
+    }, [text]); // Ejecuta la validación cada vez que `text` cambie
+
+    return { isValid };
+};
+
+export default useStringValidation;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { useState } from "react";
+
+const useStringValidation = () => {
+    const [isValid, setIsValid] = useState<boolean>(false);
+
+    const validateText = (text: string) => {
+        const regex = /^[a-zA-Z0-9\s]+$/;
+        setIsValid(regex.test(text));
+    };
+
+    return { isValid, validateText };
+};
+
+export default useStringValidation;
+
+
+
+
+import React, { useState } from "react";
+import useStringValidation from "./useStringValidation";
+
+const MyComponent = () => {
+    const { isValid, validateText } = useStringValidation();
+    const [text, setText] = useState("");
+
+    const handleValidate = () => {
+        validateText(text);
+    };
+
+    return (
+        <div>
+            <input 
+                type="text" 
+                value={text} 
+                onChange={(e) => setText(e.target.value)} 
+                placeholder="Escribe algo" 
+            />
+            <button onClick={handleValidate}>Validar texto</button>
+            <p>{isValid ? "Texto válido" : "Texto no válido"}</p>
+        </div>
+    );
+};
+
+export default MyComponent;
