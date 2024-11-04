@@ -1,0 +1,163 @@
+npm install react-pro-sidebar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState } from "react";
+import {
+  RiHome4Line,
+  RiTeamLine,
+  RiCalendar2Line,
+  RiFolder2Line,
+  RiUserFollowLine,
+  RiPlantLine,
+  RiStackLine,
+  RiUserUnfollowLine
+} from "react-icons/ri";
+import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
+import {
+  Sidebar,
+  SubMenu,
+  Menu,
+  MenuItem
+} from "react-pro-sidebar";
+
+function Sidebars() {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const handleCollapsedChange = () => {
+    setCollapsed(!collapsed);
+  };
+
+  return (
+    <div style={{ display: "flex", height: "100vh" }}>
+      <Sidebar
+        collapsed={collapsed}
+        className="app-sidebar"
+        style={{ height: "100%", position: "absolute" }}
+      >
+        <Menu>
+          <MenuItem
+            icon={collapsed ? <FiChevronsRight /> : <FiChevronsLeft />}
+            onClick={handleCollapsedChange}
+          >
+            {!collapsed && (
+              <div
+                style={{
+                  padding: "9px",
+                  fontWeight: "bold",
+                  fontSize: 14,
+                  letterSpacing: "1px"
+                }}
+              >
+                YOUR LOGO!..
+              </div>
+            )}
+          </MenuItem>
+          <hr />
+          <MenuItem icon={<RiHome4Line />}>Dashboard</MenuItem>
+          <SubMenu defaultOpen label="Professors" icon={<RiTeamLine />}>
+            <MenuItem icon={<RiUserFollowLine />}>Active</MenuItem>
+            <MenuItem icon={<RiUserUnfollowLine />}>Ex Professors</MenuItem>
+            <MenuItem icon={<RiCalendar2Line />}>Probation Period</MenuItem>
+          </SubMenu>
+          <SubMenu defaultOpen label="Records" icon={<RiFolder2Line />}>
+            <MenuItem icon={<RiStackLine />}>Senior Students</MenuItem>
+            <MenuItem icon={<RiPlantLine />}>Junior Students</MenuItem>
+          </SubMenu>
+        </Menu>
+      </Sidebar>
+    </div>
+  );
+}
+
+export default Sidebars;
+
+
+
+
+
+
+
+
+
+
+
+
+
+otro ejemplo con boxicon
+
+
+
+import React, { useState } from "react";
+import { Sidebar, SubMenu, Menu, MenuItem } from "react-pro-sidebar";
+
+function Sidebars() {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const handleCollapsedChange = () => {
+    setCollapsed(!collapsed);
+  };
+
+  return (
+    <div style={{ display: "flex", height: "100vh" }}>
+      <Sidebar
+        collapsed={collapsed}
+        className="app-sidebar"
+        style={{ height: "100%", position: "absolute" }}
+      >
+        <Menu>
+          <MenuItem
+            icon={
+              collapsed ? (
+                <i className="bx bx-chevrons-right"></i>
+              ) : (
+                <i className="bx bx-chevrons-left"></i>
+              )
+            }
+            onClick={handleCollapsedChange}
+          >
+            {!collapsed && (
+              <div
+                style={{
+                  padding: "9px",
+                  fontWeight: "bold",
+                  fontSize: 14,
+                  letterSpacing: "1px"
+                }}
+              >
+                YOUR LOGO!..
+              </div>
+            )}
+          </MenuItem>
+          <hr />
+          <MenuItem icon={<i className="bx bx-home"></i>}>Dashboard</MenuItem>
+          <SubMenu defaultOpen label="Professors" icon={<i className="bx bx-group"></i>}>
+            <MenuItem icon={<i className="bx bx-user-plus"></i>}>Active</MenuItem>
+            <MenuItem icon={<i className="bx bx-user-minus"></i>}>Ex Professors</MenuItem>
+            <MenuItem icon={<i className="bx bx-calendar"></i>}>Probation Period</MenuItem>
+          </SubMenu>
+          <SubMenu defaultOpen label="Records" icon={<i className="bx bx-folder"></i>}>
+            <MenuItem icon={<i className="bx bx-layer"></i>}>Senior Students</MenuItem>
+            <MenuItem icon={<i className="bx bx-leaf"></i>}>Junior Students</MenuItem>
+          </SubMenu>
+        </Menu>
+      </Sidebar>
+    </div>
+  );
+}
+
+export default Sidebars;
+
