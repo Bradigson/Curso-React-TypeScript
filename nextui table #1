@@ -1,0 +1,134 @@
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip } from "@nextui-org/react";
+
+const statusColorMap = {
+  active: "success",
+  paused: "danger",
+  vacation: "warning",
+};
+
+const SystemRole = () => {
+  return (
+    <section className="system-role">
+      <Table aria-label="Example table with custom cells">
+
+        {/* header */}
+        <TableHeader>
+          <TableColumn align="start">Nombre</TableColumn>
+          <TableColumn align="start">Rol</TableColumn>
+          <TableColumn align="start">Estado</TableColumn>
+          <TableColumn align="center">Acciones</TableColumn>
+        </TableHeader>
+
+
+
+
+        <TableBody>
+
+
+          <TableRow>
+            {/* Columna Nombre */}
+            <TableCell>
+              <User
+                avatarProps={{ radius: "full", src: "https://images.unsplash.com/photo-1648740366598-7fb7c5e73fa5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" }}
+                description="johndoe@example.com"
+                name="John Doe"
+              />
+            </TableCell>
+            
+            {/* Columna Rol */}
+            <TableCell>
+              <div className="flex flex-col">
+                <p className="text-bold text-sm capitalize">Admin</p>
+                <p className="text-bold text-sm capitalize text-default-400">Engineering</p>
+              </div>
+            </TableCell>
+            
+            {/* Columna Estado */}
+            <TableCell>
+              <Chip className="capitalize" color={statusColorMap["active"]} size="sm" variant="flat">
+                Active
+              </Chip>
+            </TableCell>
+            
+            {/* Columna Acciones */}
+            <TableCell style={{background:'none'}}>
+              <div className="" style={{ display:'flex', justifyContent:'space-around'}}>
+                <Tooltip content="Details">
+                  <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                    <i className="bx bx-low-vision"></i>
+                  </span>
+                </Tooltip>
+                <Tooltip content="Edit user">
+                  <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                    <i className="bx bx-edit-alt"></i>
+                  </span>
+                </Tooltip>
+                <Tooltip color="danger" content="Delete user">
+                  <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                    <i className="bx bx-trash"></i>
+                  </span>
+                </Tooltip>
+              </div>
+            </TableCell>
+          </TableRow>
+
+
+
+
+
+
+
+
+
+          
+          {/* Segunda fila */}
+          <TableRow>
+            <TableCell>
+              <User
+                avatarProps={{ radius: "full", src: "https://images.unsplash.com/photo-1648740366598-7fb7c5e73fa5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8" }}
+                description="janesmith@example.com"
+                name="Jane Smith"
+              />
+            </TableCell>
+
+            <TableCell>
+              <div className="flex flex-col">
+                <p className="text-bold text-sm capitalize">User</p>
+                <p className="text-bold text-sm capitalize text-default-400">Design</p>
+              </div>
+            </TableCell>
+            <TableCell>
+              <Chip className="capitalize" color={statusColorMap["paused"]} size="sm" variant="flat">
+                Paused
+              </Chip>
+            </TableCell>
+
+
+            <TableCell>
+              <div className="" style={{ display:'flex', justifyContent:'space-around'}}>
+                <Tooltip content="Details">
+                  <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                    <i className="bx bx-low-vision"></i>
+                  </span>
+                </Tooltip>
+                <Tooltip content="Edit user">
+                  <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                    <i className="bx bx-edit-alt"></i>
+                  </span>
+                </Tooltip>
+                <Tooltip color="danger" content="Delete user">
+                  <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                    <i className="bx bx-trash"></i>
+                  </span>
+                </Tooltip>
+              </div>
+            </TableCell>
+
+          </TableRow>
+        </TableBody>
+      </Table>
+    </section>
+  );
+};
+
+export default SystemRole;
