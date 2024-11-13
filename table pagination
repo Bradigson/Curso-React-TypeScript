@@ -69,3 +69,58 @@ import {
         )}
       </TableBody>
     </Table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#3 key error fix : 
+
+                <Table 
+                  aria-label="Example table with client side pagination"
+                  bottomContent={
+                    <div className="flex w-full justify-center">
+                      <Pagination
+                        isCompact
+                        showControls
+                        showShadow
+                        color="secondary"
+                        page={page}
+                        total={pages}
+                        onChange={(page: any) => setPage(page)}
+                      />
+                    </div>
+                  }
+                  classNames={{
+                    wrapper: "min-h-[222px]",
+                  }}
+                >
+                  <TableHeader>
+                    <TableColumn key="name">Menu</TableColumn>
+                    <TableColumn key="create">Crear</TableColumn>
+                    <TableColumn key="edit">Editar</TableColumn>
+                    <TableColumn key="delete">Eliminar</TableColumn>
+                  </TableHeader>
+                  <TableBody>
+                    {itemsMenu?.map((m, i) =>
+                      <TableRow key={i}>
+                        {(columnKey: any) => <TableCell>{getKeyValue(m, columnKey)}</TableCell>}
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
