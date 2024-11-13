@@ -124,3 +124,65 @@ import {
                     )}
                   </TableBody>
                 </Table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+con check 
+
+  <Table 
+                    aria-label="Example table with client side pagination"
+                    bottomContent={
+                      <div className="flex w-full justify-center">
+                        <Pagination
+                          isCompact
+                          showControls
+                          showShadow
+                          color="secondary"
+                          page={page}
+                          total={pages}
+                          onChange={(page: any) => setPage(page)}
+                        />
+                      </div>
+                    }
+                    classNames={{
+                      wrapper: "min-h-[222px]",
+                    }}
+                  >
+                    <TableHeader>
+                      <TableColumn key="name">Menu</TableColumn>
+                      <TableColumn key="create">Crear</TableColumn>
+                      <TableColumn key="edit">Editar</TableColumn>
+                      <TableColumn key="delete">Eliminar</TableColumn>
+                    </TableHeader>
+                    <TableBody>
+                      {itemsMenu?.map((m, i) =>
+                        <TableRow key={i}>
+                          <TableCell>{m.name}</TableCell>
+                          <TableCell>
+                            <Checkbox aria-label={`Crear ${m.name}`} />
+                          </TableCell>
+                          <TableCell>
+                            <Checkbox aria-label={`Editar ${m.name}`} />
+                          </TableCell>
+                          <TableCell>
+                            <Checkbox aria-label={`Eliminar ${m.name}`} />
+                          </TableCell>
+                        </TableRow>
+                      )}
+                    </TableBody>
+                  </Table>
