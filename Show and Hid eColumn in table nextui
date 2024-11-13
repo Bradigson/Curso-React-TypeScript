@@ -1,0 +1,117 @@
+
+  //to hide or show colum  #1
+  interface RowData {
+    "$id": string;
+    idRole: number;
+    name: string;
+    descripcion: string;
+    companyId: number;
+  }
+
+   //to hide or show colum  #2
+  const INITIAL_VISIBLE_COLUMNS = ["name", "descripcion", "companyId"];
+
+
+
+
+
+
+
+
+
+
+
+   //to hide or show colum  #3
+
+  // Estado para las columnas visibles
+  const [visibleColumns, setVisibleColumns] = useState<Set<string>>(new Set(INITIAL_VISIBLE_COLUMNS));
+
+   //to hide or show colum  #4
+  // Obtener los datos y las columnas dinámicamente
+  const data = role?.data?.$values || [];
+  const headers = data.length > 0 ? Object.keys(data[0]).filter((key) => key !== "$id" && key !== 'idRole') : [];
+
+
+   //to hide or show colum  #5
+  // Mapeo de columnas desde los headers
+  const columns = headers.map((key) => ({
+    uid: key,
+    name: key.charAt(0).toUpperCase() + key.slice(1), // Formatea el nombre de la columna
+  }));
+
+
+   //to hide or show colum  #5
+  // Filtramos las columnas visibles
+  const headerColumns = useMemo(() => {
+    if (visibleColumns.size === columns.length) {
+      return columns;
+    }
+    return columns.filter((column) => visibleColumns.has(column.uid));
+  }, [visibleColumns, columns]);
+
+
+   //to hide or show colum  #6
+  // Función para renderizar el valor de una celda
+  const renderCell = (row: RowData, columnKey: string) => {
+    const cellValue = row[columnKey as keyof RowData]; // Aseguramos que el valor sea de tipo RowData
+    return cellValue;
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <article className="system-role-table-container-table">
+          
+            <div>
+                {/* Dropdown para seleccionar columnas */}
+                
+
+                {/* Tabla */}
+                <Table aria-label="Table with column visibility" aria-labelledby="table">
+                    <TableHeader>
+                        {
+                            Array.isArray(headers) && headers.length > 0 ? (
+                            headerColumns.map((h, i) => (
+                                visibleColumns.has(h.uid) ? (
+                                <TableColumn key={i}>{h.name}</TableColumn> // Asegúrate de usar h.name y no el objeto completo
+                                ) : null
+                            ))
+                            ) : (
+                            <TableColumn><Spinner /></TableColumn>
+                            )
+                        }
+                    </TableHeader>
+                
+                    <TableBody >
+                        {
+                            role?.data.$values.map(item=>
+                                <TableRow key={item.$id}>
+                                {headerColumns.map((column) => (
+                                    <TableCell key={column.uid}>{renderCell(item, column.uid)}</TableCell>
+                                ))}
+                                </TableRow>
+                                )
+                        }
+                    
+                    </TableBody>
+                </Table>
+             </div>
