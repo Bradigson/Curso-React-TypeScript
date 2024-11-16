@@ -1,0 +1,101 @@
+import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
+
+
+
+const HomeMenu = ()=>{
+
+    const list = [
+        {
+          title: "Orange",
+          img: "https://images.unsplash.com/photo-1720048169707-a32d6dfca0b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          price: "$5.50",
+        },
+        {
+          title: "Tangerine",
+          img: "https://images.unsplash.com/photo-1720048169707-a32d6dfca0b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          price: "$3.00",
+        },
+        {
+          title: "Raspberry",
+          img: "https://images.unsplash.com/photo-1720048169707-a32d6dfca0b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          price: "$10.00",
+        },
+        {
+          title: "Lemon",
+          img: "https://images.unsplash.com/photo-1720048169707-a32d6dfca0b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          price: "$5.30",
+        },
+        {
+          title: "Avocado",
+          img: "https://images.unsplash.com/photo-1720048169707-a32d6dfca0b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          price: "$15.70",
+        },
+        {
+          title: "Lemon 2",
+          img: "https://images.unsplash.com/photo-1720048169707-a32d6dfca0b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          price: "$8.00",
+        },
+        {
+          title: "Banana",
+          img: "https://images.unsplash.com/photo-1720048169707-a32d6dfca0b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          price: "$7.50",
+        },
+        {
+          title: "Watermelon",
+          img: "https://images.unsplash.com/photo-1720048169707-a32d6dfca0b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          price: "$12.20",
+        },
+      ];
+    
+    return(
+        <section className="home-menu">
+                  <div 
+                  style={{
+                    display: 'grid',
+                    gap: '0.5rem', // equivalente a gap-2
+                    gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', // equivalente a grid-cols-2
+                  }}
+                  >
+                    {list.map((item, index) => (
+                        <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}>
+                        <CardBody 
+                         style={{
+                            overflow: 'visible', // equivalente a overflow-visible
+                            padding: 0, // equivalente a p-0
+                          }}
+                        >
+                            <Image
+                            shadow="sm"
+                            radius="lg"
+                            width="100%"
+                            alt={item.title}
+                            src={item.img}
+                            style={{
+                                width: '100%', // equivalente a w-full
+                                objectFit: 'cover', // equivalente a object-cover
+                                height: '140px', // equivalente a h-[140px]
+                              }}
+                            />
+                        </CardBody>
+                        <CardFooter 
+                        style={{
+                            fontSize: '0.875rem', // equivalente a text-small (según el tamaño estándar de Tailwind)
+                            display: 'flex', // necesario para justify-content
+                            justifyContent: 'space-between', // equivalente a justify-between
+                          }}
+                        >
+                            <b>{item.title}</b>
+                            <p style={{
+                                    color: '#3b82f6', // El valor hexadecimal para blue-500 en Tailwind CSS
+                                }}>{item.price}</p>
+                        </CardFooter>
+                        </Card>
+                    ))}
+                    </div>
+        </section>
+    )
+}
+
+
+
+export default HomeMenu;
