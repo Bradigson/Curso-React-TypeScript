@@ -1,0 +1,18 @@
+1- git checkout Manuel/Dev
+
+2-
+git pull origin master
+git pull origin Manuel/Dev
+
+3-
+git merge master
+
+
+
+
+
+
+4-
+git add .
+git commit -m "Merge master into Manuel/Dev"
+git push origin Manuel/Dev
